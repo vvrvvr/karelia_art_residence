@@ -191,6 +191,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3887185075125053422, guid: bb186beea4cd7fe478ab4fa1571827ff, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3887185075125053422, guid: bb186beea4cd7fe478ab4fa1571827ff, type: 3}
       propertyPath: m_AABB.m_Center.x
       value: 0.5677177
       objectReference: {fileID: 0}
@@ -215,9 +219,13 @@ PrefabInstance:
       value: 1.3526455
       objectReference: {fileID: 0}
     - target: {fileID: -3887185075125053422, guid: bb186beea4cd7fe478ab4fa1571827ff, type: 3}
+      propertyPath: m_SkinnedMotionVectors
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3887185075125053422, guid: bb186beea4cd7fe478ab4fa1571827ff, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 150603c95ae82bb4a9364677de3f13c1, type: 2}
+      objectReference: {fileID: 2100000, guid: b90cec4dbc994b1479167af6df27539d, type: 2}
     - target: {fileID: -3887185075125053422, guid: bb186beea4cd7fe478ab4fa1571827ff, type: 3}
       propertyPath: m_BlendShapeWeights.Array.size
       value: 4
@@ -738,6 +746,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Uduino
       objectReference: {fileID: 0}
+    - target: {fileID: 1169019389771402, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4720884688345560, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1143,7 +1155,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1189315572}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e9ed92e1d3d3ac42bec97c49a501a74, type: 3}
   m_Name: 
@@ -1637,6 +1649,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bb186beea4cd7fe478ab4fa1571827ff, type: 3}
   m_PrefabInstance: {fileID: 6880486}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1822307781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822307778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c9b16efbc4e4cd408c6d7610e3066ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2099915400
 GameObject:
   m_ObjectHideFlags: 0

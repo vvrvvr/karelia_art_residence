@@ -57,10 +57,11 @@ public class ArduinoTestButton : MonoBehaviour
             prevButtonState = currentButtonState;
 
             var potentiometerCondition = _uduino.analogRead(AnalogPin.A1);
+            var shapeVal = (float)potentiometerCondition;// / 10.0f;
 
             //arduinoOutpuText.text = "" + buttonCondition;
-            var shapeVal = (float)potentiometerCondition / 10.0f;
-            handRenderer.SetBlendShapeWeight(currentBlendShape, shapeVal);
+            //handRenderer.SetBlendShapeWeight(currentBlendShape, shapeVal);
+            arduinoOutpuText.text = "сопротивление: " + shapeVal;
 
             //if (Input.GetKeyDown(KeyCode.Space))
             //{
