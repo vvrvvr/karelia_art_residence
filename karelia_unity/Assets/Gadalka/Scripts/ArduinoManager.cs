@@ -10,7 +10,7 @@ public class ArduinoManager : MonoBehaviour
     [SerializeField] private Slider _slider;
     [SerializeField] private Display2Manager _display2Manager;
     private UduinoManager _uduino;
-    private bool isBoardConnected = true;
+    private bool isBoardConnected = false;
 
     //potentiometers 
     private int[] potentiometersArr = new int[6];
@@ -22,8 +22,8 @@ public class ArduinoManager : MonoBehaviour
     public int HorizontalControl;
     public int VerticalControl;
 
-    public int vertIndex;
-    public int horIndex;
+    private int vertIndex;
+    private int horIndex;
 
 
     //buttons
@@ -54,7 +54,7 @@ public class ArduinoManager : MonoBehaviour
         _uduino.pinMode(AnalogPin.A0, PinMode.Input);
 
         //TEMP
-        SetControls(true);
+        SetControls(false);
     }
 
     void Update()
@@ -89,7 +89,7 @@ public class ArduinoManager : MonoBehaviour
         }
         else
         {
-
+            //что-то делать, если ардуинка не подключена
         }
     }
 
@@ -125,5 +125,24 @@ public class ArduinoManager : MonoBehaviour
         _display2Manager.ResetDisplay2();
         SetControls(true);
         //reset display 1
+    }
+
+
+    public void DataRecieve()
+    {
+        Debug.Log("data recieved");
+    }
+    //
+    public void BoardConnected()
+    {
+        Debug.Log("board connected");
+        isBoardConnected = true;
+        //errorScreen.SetActive(false);
+    }
+    public void BoardDisconnected()
+    {
+        Debug.Log("board disconnected");
+        isBoardConnected = false;
+        //errorScreen.SetActive(true);
     }
 }
