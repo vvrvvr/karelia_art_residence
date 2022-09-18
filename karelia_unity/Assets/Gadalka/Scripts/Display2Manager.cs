@@ -22,9 +22,6 @@ public class Display2Manager : MonoBehaviour
         xMax = xBound;
         yMin = -yBound;
         yMax = yBound;
-
-
-        _dot.transform.position = new Vector3(xMax, yMax, 0);
     }
 
     private void SetStartPosition()
