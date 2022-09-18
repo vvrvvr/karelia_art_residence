@@ -127,7 +127,6 @@ public class ArduinoManager : MonoBehaviour
         //reset display 1
     }
 
-
     public void DataRecieve()
     {
         Debug.Log("data recieved");
