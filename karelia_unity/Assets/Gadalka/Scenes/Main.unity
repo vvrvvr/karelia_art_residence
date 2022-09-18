@@ -675,7 +675,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114023058375386772, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
       propertyPath: interfaceType
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114023058375386772, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
       propertyPath: pins.Array.size
@@ -1021,8 +1021,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa13bb288d6c7649964ef7700d46a80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arduinoOutpuText: {fileID: 0}
-  _slider: {fileID: 0}
+  arduinoOutpuText: {fileID: 140633995}
+  _slider: {fileID: 534604625}
+  _display2Manager: {fileID: 1637945838}
+  p1Current: 0
+  p1Prev: 0
+  p2Current: 0
+  p2Prev: 0
+  p3Current: 0
+  p3Prev: 0
+  p4Current: 0
+  p4Prev: 0
+  p5Current: 0
+  p5Prev: 0
+  b1Current: 0
+  b1Prev: 0
+  k1Current: 0
+  k1Prev: 0
 --- !u!4 &804747781 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4720884688345560, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
@@ -2195,7 +2210,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cam: {fileID: 965398698}
   _dot: {fileID: 876363288}
-  _finish: {fileID: 0}
+  _finish: {fileID: 2086702043}
+  _arduinoManager: {fileID: 759993364}
+  level1: {fileID: 0}
+  level2: {fileID: 0}
+  level3: {fileID: 0}
 --- !u!1 &1750894579
 GameObject:
   m_ObjectHideFlags: 0

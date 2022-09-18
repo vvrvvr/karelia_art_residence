@@ -8,28 +8,32 @@ public class ArduinoManager : MonoBehaviour
 {
     [SerializeField] private Text arduinoOutpuText;
     [SerializeField] private Slider _slider;
+    [SerializeField] private Display2Manager _display2Manager;
     private UduinoManager _uduino;
     private bool isBoardConnected = true;
 
     //potentiometers 
-    private int p1Current;
-    private int p1Prev = 0;
-    private int p2Current;
-    private int p2Prev = 0;
-    private int p3Current;
-    private int p3Prev = 0;
-    private int p4Current;
-    private int p4Prev = 0;
-    private int p5Current;
-    private int p5Prev = 0;
+    [HideInInspector] public int p1Current;
+    [HideInInspector] public int p1Prev = 0;
+    [HideInInspector] public int p2Current;
+    [HideInInspector] public int p2Prev = 0;
+    [HideInInspector] public int p3Current;
+    [HideInInspector] public int p3Prev = 0;
+    [HideInInspector] public int p4Current;
+    [HideInInspector] public int p4Prev = 0;
+    [HideInInspector] public int p5Current;
+    [HideInInspector] public int p5Prev = 0;
+    private int HorizontalControl;
+    private int VerticalControl;
+
 
     //buttons
-    private int b1Current;
-    private int b1Prev = 0;
+    [HideInInspector] public int b1Current;
+    [HideInInspector] public int b1Prev = 0;
 
     //крабики хз как по английски
-    private int k1Current;
-    private int k1Prev = 0;
+    [HideInInspector] public int k1Current;
+    [HideInInspector] public int k1Prev = 0;
 
 
     private void Awake()
@@ -50,6 +54,9 @@ public class ArduinoManager : MonoBehaviour
 
         //krab
         _uduino.pinMode(AnalogPin.A0, PinMode.Input);
+
+        //TEMP
+        SetControls();
     }
 
     void Update()
@@ -71,7 +78,7 @@ public class ArduinoManager : MonoBehaviour
 
 
             //секция манипуляций
-
+            UpdateVals();
             //
 
             p1Prev = p1Current;
@@ -82,5 +89,24 @@ public class ArduinoManager : MonoBehaviour
             b1Prev = b1Current;
             k1Prev = k1Current;
         }
+        else
+        {
+
+        }
+    }
+
+    public void SetControls()
+    {
+
+    }
+
+    public void UpdateVals()
+    {
+
+    }
+
+    public void ResetGame()
+    {
+        _display2Manager.ResetDisplay2();
     }
 }
