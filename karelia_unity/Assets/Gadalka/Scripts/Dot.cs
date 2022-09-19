@@ -29,9 +29,12 @@ public class Dot : MonoBehaviour
     private int prevhorizontalInput;
     private int horizontalValue = 0;
 
-
-    
+    private void OnEnable()
+    {
+        isFirstLaunch = true;
+    }
    
+
     void Start()
     {
 
