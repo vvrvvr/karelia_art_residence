@@ -107,6 +107,8 @@ public class ArduinoManager : MonoBehaviour
                     horIndex = Random.Range(1, potentiometersArr.Length);
                 }
             }
+            Debug.Log("vert = " + vertIndex);
+            Debug.Log("hor = " + horIndex);
         }
         else
         {

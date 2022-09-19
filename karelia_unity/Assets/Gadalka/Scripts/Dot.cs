@@ -1,39 +1,82 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using Uduino;
 
 public class Dot : MonoBehaviour
 {
-    [SerializeField] Display2Manager _display2Manager;
+    [SerializeField] ArduinoManager _arduinoManager;
     [SerializeField] private LayerMask wallLayer;
-    public bool hasControl = true;
-    public int speed = 1;
-    public float factor = 1.1f;
-
-    private int moveValue = 0;
+    [Space]
+    [SerializeField] private Text _textVert;
+    [SerializeField] private Slider _sliderVert;
+    [Space]
+    [SerializeField] private Text _textHor;
+    [SerializeField] private Slider _sliderHor;
+    [SerializeField] private float factor = 1.1f;
     private float halfDotDimention = 0.5f;
+
+    public bool hasControl = false;
+    public bool isFirstLaunch = true; //нужно, чтобы точка обнуляла значения и не прескакивала за потенциометром, когда нет управления
+
+    //vertical input
+    private int verticallInput = 0;
+    private int prevVerticalInput;
+    private int verticalValue = 0;
+    //horizontal input
+    private int horizontalInput = 0;
+    private int prevhorizontalInput;
+    private int horizontalValue = 0;
+
+
+    
+   
+    void Start()
+    {
+
+    }
 
     void Update()
     {
         if (hasControl)
         {
-            var horVal = _display2Manager.horizontalMoveValue;
-            //var vertVal = _display2Manager.verticalMoveValue;
+            verticalValue = 0;
+            horizontalValue = 0;
 
-            if (horVal > 0)
-            {
-                Debug.Log("right" + horVal);
-                MoveRightLeft(Vector3.right, horVal);
-            }
-            if (horVal < 0)
-            {
-                Debug.Log("left" + horVal);
-                MoveRightLeft(Vector3.left, horVal);
-            }
+            _textVert.text = "vertical = " + verticallInput;
+            _sliderVert.value = (float)verticallInput / 1000.0f;
 
-            //if (vertVal > 0)
-            //    MoveUpDown(Vector3.up, vertVal);
-            //if (vertVal < 0)
-            //    MoveUpDown(Vector3.down, vertVal);
+            _textHor.text = "horizontal = " + horizontalInput;
+            _sliderHor.value = (float)horizontalInput / 1000.0f;
+
+            verticallInput = _arduinoManager.VerticalControl;
+            verticalValue = verticallInput - prevVerticalInput; //величина перемещения
+            if(isFirstLaunch)
+            {
+                verticalValue = 0;
+                //isFirstLaunch = false;
+            }
+            if (verticalValue > 0)
+                MoveUpDown(Vector3.up, verticalValue);
+            if (verticalValue < 0)
+                MoveUpDown(Vector3.down, verticalValue);
+
+            horizontalInput = _arduinoManager.HorizontalControl;
+            horizontalValue = horizontalInput - prevhorizontalInput; //величина перемещения
+            if(isFirstLaunch)
+            {
+                horizontalValue = 0;
+                isFirstLaunch = false; //отключаем здесь, чтобы сработало в двух условиях
+            }
+            if (horizontalValue > 0)
+                MoveRightLeft(Vector3.right, horizontalValue);
+            if (horizontalValue < 0)
+                MoveRightLeft(Vector3.left, horizontalValue);
+
+
+            prevVerticalInput = verticallInput;
+            prevhorizontalInput = horizontalInput;
         }
     }
 
@@ -84,10 +127,10 @@ public class Dot : MonoBehaviour
             switch (dir)
             {
                 case Vector3 v when v.Equals(Vector3.right):
-                    transform.position += dir * Time.deltaTime * moveValue * factor;
+                    transform.position += dir * Time.deltaTime * moveVal * factor;
                     break;
                 case Vector3 v when v.Equals(Vector3.left):
-                    transform.position -= dir * Time.deltaTime * moveValue * factor;
+                    transform.position -= dir * Time.deltaTime * moveVal * factor;
                     break;
             }
         }
@@ -141,17 +184,14 @@ public class Dot : MonoBehaviour
             switch (dir)
             {
                 case Vector3 v when v.Equals(Vector3.up):
-                    transform.position += dir * Time.deltaTime * moveValue * factor;
+                    transform.position += dir * Time.deltaTime * moveVal * factor;
                     break;
                 case Vector3 v when v.Equals(Vector3.down):
-                    transform.position -= dir * Time.deltaTime * moveValue * factor;
+                    transform.position -= dir * Time.deltaTime * moveVal * factor;
                     break;
             }
         }
 
     }
-
-  
-
 
 }
