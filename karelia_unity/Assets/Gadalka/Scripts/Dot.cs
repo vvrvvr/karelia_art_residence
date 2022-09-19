@@ -1,58 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+
 
 public class Dot : MonoBehaviour
 {
-    public bool hasControl = true;
-    public Text _text;
-    public Slider _slider;
-    private int currentInt = 0;
-    private int prevInt;
-    public int speed = 1;
-    private int moveValue = 0;
-    public float factor = 1.1f;
+    [SerializeField] Display2Manager _display2Manager;
     [SerializeField] private LayerMask wallLayer;
-    private float halfDotDimention = 0.5f;
+    public bool hasControl = true;
+    public int speed = 1;
+    public float factor = 1.1f;
 
-    void Start()
-    {
-        //currentInt = Random.Range(0, 1024);
-        prevInt = currentInt;
-    }
+    private int moveValue = 0;
+    private float halfDotDimention = 0.5f;
 
     void Update()
     {
         if (hasControl)
         {
+            var horVal = _display2Manager.horizontalMoveValue;
+            //var vertVal = _display2Manager.verticalMoveValue;
 
-            moveValue = 0;
-            _text.text = "value = " + currentInt;
-            _slider.value = (float)currentInt / 1000.0f;
-
-            var hor = Input.GetAxisRaw("Horizontal");
-            currentInt += (int)hor * speed;
-            if (currentInt > 1024)
+            if (horVal > 0)
             {
-                currentInt = 1024;
+                Debug.Log("right" + horVal);
+                MoveRightLeft(Vector3.right, horVal);
             }
-            else if (currentInt < 0)
+            if (horVal < 0)
             {
-                currentInt = 0;
+                Debug.Log("left" + horVal);
+                MoveRightLeft(Vector3.left, horVal);
             }
 
-            moveValue = currentInt - prevInt;
-
-            if (moveValue > 0)
-            {
-                MoveUpDown(Vector3.up, moveValue);
-            }
-            if (moveValue < 0)
-                MoveUpDown(Vector3.down, moveValue);
-
-
-            prevInt = currentInt;
+            //if (vertVal > 0)
+            //    MoveUpDown(Vector3.up, vertVal);
+            //if (vertVal < 0)
+            //    MoveUpDown(Vector3.down, vertVal);
         }
     }
 
@@ -169,6 +150,8 @@ public class Dot : MonoBehaviour
         }
 
     }
+
+  
 
 
 }

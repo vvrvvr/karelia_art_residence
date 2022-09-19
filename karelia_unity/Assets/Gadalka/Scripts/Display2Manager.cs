@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Display2Manager : MonoBehaviour
 {
@@ -8,6 +9,14 @@ public class Display2Manager : MonoBehaviour
     [SerializeField] GameObject _dot;
     [SerializeField] GameObject _finish;
     [SerializeField] ArduinoManager _arduinoManager;
+
+    private bool isFirstLaunch = true;
+
+    //debug
+    public Text _text;
+    public Slider _slider1;
+    public Slider _slider2;
+
     //levels
     [SerializeField] GameObject level1;
     [SerializeField] GameObject level2;
@@ -21,6 +30,16 @@ public class Display2Manager : MonoBehaviour
     private float xMax;
     private float yMin;
     private float yMax;
+
+    //dot moving
+    [HideInInspector] public int horizontalMoveValue  = 0;
+    [HideInInspector] public int verticalMoveValue = 0;
+    private int prevHorizontalValue = 0;
+    private int prevVerticalValue = 0;
+    private int currentHor = 0;
+    private int currentVert = 0;
+
+
     void Start()
     {
         xMin = -xBound;
@@ -29,6 +48,31 @@ public class Display2Manager : MonoBehaviour
         yMax = yBound;
 
         ResetDisplay2();
+        //ChangeLevel();
+        //SetStartPosition();
+    }
+
+    private void Update()
+    {
+        currentHor = _arduinoManager.HorizontalControl;
+        currentVert = _arduinoManager.VerticalControl;
+        if (isFirstLaunch)
+        {
+            isFirstLaunch = false;
+            prevHorizontalValue = currentHor;
+            prevVerticalValue = currentVert;
+        }
+        horizontalMoveValue = currentHor - prevHorizontalValue;
+        if(horizontalMoveValue != 0)
+            _text.text = "horizontal move value = " + horizontalMoveValue;
+        verticalMoveValue = currentVert - prevVerticalValue;
+
+        //что-то делаем
+
+        //set prev values
+        prevHorizontalValue = currentHor;
+        prevVerticalValue = currentVert;
+
     }
 
 

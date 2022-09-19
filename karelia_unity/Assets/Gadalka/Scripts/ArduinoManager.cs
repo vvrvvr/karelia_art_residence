@@ -11,6 +11,7 @@ public class ArduinoManager : MonoBehaviour
     [SerializeField] private Display2Manager _display2Manager;
     private UduinoManager _uduino;
     private bool isBoardConnected = false;
+    
 
     //potentiometers 
     private int[] potentiometersArr = new int[6];
@@ -54,7 +55,7 @@ public class ArduinoManager : MonoBehaviour
         _uduino.pinMode(AnalogPin.A0, PinMode.Input);
 
         //TEMP
-        SetControls(false);
+        SetControls(false); // задаём случайные потенциометры для управления перемещением
     }
 
     void Update()

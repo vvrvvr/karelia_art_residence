@@ -1161,19 +1161,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 876363288}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2e0013f183d38842939b4e5e6bbbfd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasControl: 1
-  _text: {fileID: 140633995}
-  _slider: {fileID: 534604625}
-  speed: 3
-  factor: 1.07
+  _display2Manager: {fileID: 1637945838}
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
+  hasControl: 1
+  speed: 3
+  factor: 1.07
 --- !u!1 &955485552
 GameObject:
   m_ObjectHideFlags: 0
@@ -1535,7 +1534,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1121269631}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.37, y: 2.47, z: 0}
+  m_LocalPosition: {x: 3.59, y: 4.35, z: 0}
   m_LocalScale: {x: 1, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2208,9 +2207,14 @@ MonoBehaviour:
   _dot: {fileID: 876363288}
   _finish: {fileID: 2086702043}
   _arduinoManager: {fileID: 759993364}
+  _text: {fileID: 140633995}
+  _slider1: {fileID: 0}
+  _slider2: {fileID: 0}
   level1: {fileID: 0}
   level2: {fileID: 0}
   level3: {fileID: 0}
+  horizontalMoveValue: 0
+  verticalMoveValue: 0
 --- !u!1 &1750894579
 GameObject:
   m_ObjectHideFlags: 0
@@ -2515,7 +2519,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137119873}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.17, y: 2.47, z: 0}
+  m_LocalPosition: {x: 7.12, y: 5.36, z: 0}
   m_LocalScale: {x: 1, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
