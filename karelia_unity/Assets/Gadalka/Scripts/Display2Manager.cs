@@ -11,9 +11,7 @@ public class Display2Manager : MonoBehaviour
     [SerializeField] ArduinoManager _arduinoManager;
 
     //levels
-    [SerializeField] GameObject level1;
-    [SerializeField] GameObject level2;
-    [SerializeField] GameObject level3;
+    [SerializeField] GameObject[] levels = new GameObject[3];
 
 
     //private vals;
@@ -23,6 +21,8 @@ public class Display2Manager : MonoBehaviour
     private float xMax;
     private float yMin;
     private float yMax;
+
+    private int currentLevel = 0;
 
 
 
@@ -35,11 +35,10 @@ public class Display2Manager : MonoBehaviour
         yMin = -yBound;
         yMax = yBound;
 
-        _dot.SetActive(false);
-        _finish.SetActive(false);
-
-        SetStartPosition();
         ResetDisplay2();
+
+
+
 
 
     }
@@ -47,7 +46,14 @@ public class Display2Manager : MonoBehaviour
     private void Update()
     {
 
-
+        if(Input.GetKeyDown(KeyCode.J))
+        {
+            ChangeLevel();
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            ResetDisplay2();
+        }
         //что-то делаем
 
         //set prev values
@@ -63,12 +69,33 @@ public class Display2Manager : MonoBehaviour
 
     public void ResetDisplay2()
     {
-
+        currentLevel = 0;
+        _dot.SetActive(false);
+        _finish.SetActive(false);
+        for (int i = 0; i < levels.Length; i++)
+        {
+            levels[i].SetActive(false);
+        }
+        levels[currentLevel].SetActive(true);
+        SetStartPosition();
     }
 
     public void ChangeLevel()
     {
-
+        currentLevel++;
+        _dot.SetActive(false);
+        _finish.SetActive(false);
+        if (currentLevel >= levels.Length)
+        {
+            //finish game
+            return;
+        }
+        for (int i = 0; i < levels.Length; i++)
+        {
+            levels[i].SetActive(false);
+        }
+        levels[currentLevel].SetActive(true);
+        SetStartPosition();
     }
 
 
