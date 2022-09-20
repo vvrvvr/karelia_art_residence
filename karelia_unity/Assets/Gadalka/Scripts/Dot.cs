@@ -14,7 +14,8 @@ public class Dot : MonoBehaviour
     [Space]
     [SerializeField] private Text _textHor;
     [SerializeField] private Slider _sliderHor;
-    [SerializeField] private float factor = 1.1f;
+    [SerializeField] private float factorX = 0.5f;
+    [SerializeField] private float factorY = 0.3f;
     private float halfDotDimention = 0.5f;
 
     public bool hasControl = false;
@@ -85,7 +86,7 @@ public class Dot : MonoBehaviour
 
     private void MoveRightLeft(Vector3 dir, int moveVal)
     {
-        Vector3 newPos = transform.position + dir * Time.deltaTime * moveVal * factor;
+        Vector3 newPos = transform.position + dir * Time.deltaTime * moveVal * factorX;
         float dirLength = Mathf.Abs(newPos.x - transform.position.x);
         Vector3 upRayPoint = new Vector3(transform.position.x, transform.position.y + halfDotDimention, transform.position.z);
         Vector3 downRayPoint = new Vector3(transform.position.x, transform.position.y - halfDotDimention, transform.position.z);
@@ -130,10 +131,10 @@ public class Dot : MonoBehaviour
             switch (dir)
             {
                 case Vector3 v when v.Equals(Vector3.right):
-                    transform.position += dir * Time.deltaTime * moveVal * factor;
+                    transform.position += dir * Time.deltaTime * moveVal * factorX;
                     break;
                 case Vector3 v when v.Equals(Vector3.left):
-                    transform.position -= dir * Time.deltaTime * moveVal * factor;
+                    transform.position -= dir * Time.deltaTime * moveVal * factorX;
                     break;
             }
         }
@@ -142,7 +143,7 @@ public class Dot : MonoBehaviour
 
     private void MoveUpDown(Vector3 dir, int moveVal)
     {
-        Vector3 newPos = transform.position + dir * Time.deltaTime * moveVal * factor;
+        Vector3 newPos = transform.position + dir * Time.deltaTime * moveVal * factorY;
         float dirLength = Mathf.Abs(newPos.y - transform.position.y);
         Vector3 leftRayPoint = new Vector3(transform.position.x - halfDotDimention, transform.position.y, transform.position.z);
         Vector3 rightRayPoint = new Vector3(transform.position.x + halfDotDimention, transform.position.y, transform.position.z);
@@ -155,12 +156,12 @@ public class Dot : MonoBehaviour
             {
                 case Vector3 v when v.Equals(Vector3.up):
                     point = hit.point - new Vector3(halfDotDimention, 0f, 0f);
-                    point = new Vector3(point.x, transform.position.y, point.z);
+                    point = new Vector3(transform.position.x, point.y, point.z);
                     transform.position = point;
                     break;
                 case Vector3 v when v.Equals(Vector3.down):
                     point = hit.point + new Vector3(halfDotDimention, 0f, 0f);
-                    point = new Vector3(point.x, transform.position.y, point.z);
+                    point = new Vector3(transform.position.x, point.y, point.z);
                     transform.position = point;
                     break;
             }
@@ -171,7 +172,7 @@ public class Dot : MonoBehaviour
             switch (dir)
             {
                 case Vector3 v when v.Equals(Vector3.up):
-                    point = hit.point - new Vector3(0f, halfDotDimention, 0f);
+                    point = hit.point - new Vector3(halfDotDimention, 0f, 0f);
                     point = new Vector3(transform.position.x, point.y, point.z);
                     transform.position = point;
                     break;
@@ -187,10 +188,10 @@ public class Dot : MonoBehaviour
             switch (dir)
             {
                 case Vector3 v when v.Equals(Vector3.up):
-                    transform.position += dir * Time.deltaTime * moveVal * factor;
+                    transform.position += dir * Time.deltaTime * moveVal * factorY;
                     break;
                 case Vector3 v when v.Equals(Vector3.down):
-                    transform.position -= dir * Time.deltaTime * moveVal * factor;
+                    transform.position -= dir * Time.deltaTime * moveVal * factorY;
                     break;
             }
         }

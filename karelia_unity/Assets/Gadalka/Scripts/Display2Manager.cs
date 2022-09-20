@@ -39,6 +39,7 @@ public class Display2Manager : MonoBehaviour
         xMax = xBound;
         yMin = -yBound;
         yMax = yBound;
+
         _dot.SetActive(false);
 
         ResetDisplay2();
@@ -81,7 +82,7 @@ public class Display2Manager : MonoBehaviour
 
     private IEnumerator WaitToSetDot()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(1f);
         _dot.SetActive(true);
     }
 }
