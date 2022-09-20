@@ -88,8 +88,8 @@ public class Dot : MonoBehaviour
     {
         Vector3 newPos = transform.position + dir * Time.deltaTime * moveVal * factorX;
         float dirLength = Mathf.Abs(newPos.x - transform.position.x);
-        Vector3 upRayPoint = new Vector3(transform.position.x, transform.position.y + halfDotDimention, transform.position.z);
-        Vector3 downRayPoint = new Vector3(transform.position.x, transform.position.y - halfDotDimention, transform.position.z);
+        Vector3 upRayPoint = new Vector3(transform.position.x, transform.position.y + halfDotDimention - 0.01f, transform.position.z);
+        Vector3 downRayPoint = new Vector3(transform.position.x, transform.position.y - halfDotDimention + 0.01f, transform.position.z);
         RaycastHit hit;
 
         if (Physics.Raycast(upRayPoint, dir, out hit, dirLength, wallLayer))
@@ -145,8 +145,8 @@ public class Dot : MonoBehaviour
     {
         Vector3 newPos = transform.position + dir * Time.deltaTime * moveVal * factorY;
         float dirLength = Mathf.Abs(newPos.y - transform.position.y);
-        Vector3 leftRayPoint = new Vector3(transform.position.x - halfDotDimention, transform.position.y, transform.position.z);
-        Vector3 rightRayPoint = new Vector3(transform.position.x + halfDotDimention, transform.position.y, transform.position.z);
+        Vector3 leftRayPoint = new Vector3(transform.position.x - halfDotDimention + 0.01f, transform.position.y, transform.position.z);
+        Vector3 rightRayPoint = new Vector3(transform.position.x + halfDotDimention - 0.01f, transform.position.y, transform.position.z);
         RaycastHit hit;
 
         if (Physics.Raycast(leftRayPoint, dir, out hit, dirLength, wallLayer))
