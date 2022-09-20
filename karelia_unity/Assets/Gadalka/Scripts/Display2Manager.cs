@@ -39,6 +39,7 @@ public class Display2Manager : MonoBehaviour
         xMax = xBound;
         yMin = -yBound;
         yMax = yBound;
+        _dot.SetActive(false);
 
         ResetDisplay2();
         StartCoroutine(WaitToSetDot());
