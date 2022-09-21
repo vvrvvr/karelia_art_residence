@@ -33,6 +33,8 @@ public class Dot : MonoBehaviour
     private void OnEnable()
     {
         isFirstLaunch = true;
+        factorX = 0.5f;
+        factorY = 0.3f;
     }
    
 
