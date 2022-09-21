@@ -9859,6 +9859,8 @@ MonoBehaviour:
   - {fileID: 221165226}
   - {fileID: 157195384}
   - {fileID: 1562825176}
+  _currentDistance: 0
+  _maxDistance: 0
 --- !u!4 &1639138100 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5298854957745350461, guid: 653fa492113c75f40b568ad4e3ac43f2, type: 3}
@@ -12765,11 +12767,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3579458027770441975, guid: 78e829e3effd2f24aaf40503539bc529, type: 3}
       propertyPath: factorX
-      value: 0.5
+      value: 1.06
       objectReference: {fileID: 0}
     - target: {fileID: 3579458027770441975, guid: 78e829e3effd2f24aaf40503539bc529, type: 3}
       propertyPath: factorY
-      value: 0.3
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 3579458027770441975, guid: 78e829e3effd2f24aaf40503539bc529, type: 3}
       propertyPath: _textHor

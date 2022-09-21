@@ -14,8 +14,8 @@ public class Dot : MonoBehaviour
     [Space]
     [SerializeField] private Text _textHor;
     [SerializeField] private Slider _sliderHor;
-    [SerializeField] private float factorX;
-    [SerializeField] private float factorY;
+    public float factorX;
+    public float factorY;
     private float halfDotDimention = 0.5f;
 
     public bool hasControl = false;
@@ -29,18 +29,20 @@ public class Dot : MonoBehaviour
     private int horizontalInput = 0;
     private int prevhorizontalInput;
     private int horizontalValue = 0;
+    
 
     private void OnEnable()
     {
         isFirstLaunch = true;
-        factorX = 0.5f;
-        factorY = 0.3f;
+        //factorX = 0.5f;
+        //factorY = 0.3f;
     }
    
 
     void Start()
     {
-
+        //factorX = 0.5f;
+        //factorY = 0.3f;
     }
 
     void Update()

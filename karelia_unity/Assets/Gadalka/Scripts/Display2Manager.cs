@@ -14,7 +14,7 @@ public class Display2Manager : MonoBehaviour
     [SerializeField] GameObject[] levels = new GameObject[3];
 
 
-    //private vals;
+    // vals;
     private float xBound = 5.8f;
     private float yBound = 3.8f;
     private float xMin;
@@ -23,6 +23,12 @@ public class Display2Manager : MonoBehaviour
     private float yMax;
 
     private int currentLevel = 0;
+
+    public float _currentDistance;
+    public float _maxDistance;
+
+    private Transform _dotPosition;
+    private Transform _finishPoition;
 
 
 
@@ -36,15 +42,13 @@ public class Display2Manager : MonoBehaviour
         yMax = yBound;
 
         ResetDisplay2();
-
-
-
-
-
+        _dotPosition = _dot.transform;
+        _finishPoition = _finish.transform;
     }
 
     private void Update()
     {
+        _currentDistance = Vector3.Distance(_dotPosition.position, _finishPoition.position);
 
         if(Input.GetKeyDown(KeyCode.J))
         {
@@ -106,9 +110,10 @@ public class Display2Manager : MonoBehaviour
         var dotY = Choose(yMax, yMin);
         var finishX = dotX * -1;
         var finishY = dotY * -1;
-
+        //размещаем точку и финиш на экране
         _dot.transform.position = new Vector3(dotX, dotY, 0f);
         _finish.transform.position = new Vector3(finishX, finishY, 0f);
+        _maxDistance = Vector3.Distance(_dot.transform.position, _finish.transform.position);
     }
 
     private IEnumerator WaitToSetDot()
