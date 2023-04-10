@@ -29,6 +29,8 @@ public class ArduinoManager : MonoBehaviour
 
     //buttons
     [HideInInspector] public int b1Current;
+    [HideInInspector] public int b5Current;
+    [HideInInspector] public int b7Current;
     [HideInInspector] public int b1Prev = 0;
 
     //крабики хз как по английски
@@ -38,24 +40,35 @@ public class ArduinoManager : MonoBehaviour
     private void Awake()
     {
         _uduino = UduinoManager.Instance;
+        _uduino.alwaysRead = false;
+        _uduino.readTimeout = 1;
+        _uduino.writeTimeout = 1;
+        _uduino.OnDataReceived += OnDataReceived;
     }
     void Start()
     {
         //potentiometers
-        _uduino.pinMode(AnalogPin.A1, PinMode.Input);
-        _uduino.pinMode(AnalogPin.A2, PinMode.Input);
-        _uduino.pinMode(AnalogPin.A3, PinMode.Input);
-        _uduino.pinMode(AnalogPin.A4, PinMode.Input);
-        _uduino.pinMode(AnalogPin.A5, PinMode.Input);
-
-        //buttons
-        _uduino.pinMode(7, PinMode.Input_pullup);
-
-        //krab
-        _uduino.pinMode(AnalogPin.A0, PinMode.Input);
+        _uduino.pinMode(AnalogPin.A1, PinMode.Input_pullup);
+        _uduino.pinMode(AnalogPin.A2, PinMode.Input_pullup);
+        // _uduino.pinMode(AnalogPin.A3, PinMode.Input);
+        // _uduino.pinMode(AnalogPin.A4, PinMode.Input);
+        // _uduino.pinMode(AnalogPin.A5, PinMode.Input);
+        
+        // //buttons
+        _uduino.pinMode(3, PinMode.Input);
+        _uduino.pinMode(5, PinMode.Input);
+        _uduino.pinMode(7, PinMode.Input);
+        //
+        // //krab
+        // _uduino.pinMode(AnalogPin.A0, PinMode.Input);
 
         //TEMP
         SetControls(false); // задаЄм случайные потенциометры дл€ управлени€ перемещением
+    }
+
+    private void OnDataReceived(string data, UduinoDevice deviceName)
+    {
+        Debug.Log("recieved");
     }
 
     void Update()
@@ -65,15 +78,17 @@ public class ArduinoManager : MonoBehaviour
             //potentiometers
             potentiometersArr[1] = _uduino.analogRead(AnalogPin.A1);
             potentiometersArr[2] = _uduino.analogRead(AnalogPin.A2);
-            potentiometersArr[3] = _uduino.analogRead(AnalogPin.A3);
-            potentiometersArr[4] = _uduino.analogRead(AnalogPin.A4);
-            potentiometersArr[5] = _uduino.analogRead(AnalogPin.A5);
-
-            //buttons
-            b1Current = _uduino.digitalRead(7);
-
-            //krab
-            potentiometersArr[0] = _uduino.analogRead(AnalogPin.A0);
+            // potentiometersArr[3] = _uduino.analogRead(AnalogPin.A3);
+            // potentiometersArr[4] = _uduino.analogRead(AnalogPin.A4);
+            // potentiometersArr[5] = _uduino.analogRead(AnalogPin.A5);
+            //
+            // //buttons
+           b1Current = _uduino.digitalRead(3);
+           b5Current = _uduino.digitalRead(5);
+           b7Current = _uduino.digitalRead(7);
+            //
+            // //krab
+            // potentiometersArr[0] = _uduino.analogRead(AnalogPin.A0);
 
 
             //секци€ манипул€ций

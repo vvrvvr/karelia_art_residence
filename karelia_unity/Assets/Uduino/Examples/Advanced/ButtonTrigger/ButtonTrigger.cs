@@ -10,23 +10,28 @@ public class ButtonTrigger : MonoBehaviour
 
     // Solution 1:
 
-    void Awake()
-    {
-        UduinoManager.Instance.OnDataReceived += OnDataReceived; //Create the Delegate
-        UduinoManager.Instance.alwaysRead = true; // This value should be On By Default
-    }
+    // void Awake()
+    // {
+    //     UduinoManager.Instance.OnDataReceived += OnDataReceived; //Create the Delegate
+    //     UduinoManager.Instance.alwaysRead = true; // This value should be On By Default
+    // }
+    //
+    // void OnDataReceived(string data, UduinoDevice deviceName)
+    // {
+    //     if (data == "1")
+    //         PressedDown();
+    //     else if (data == "0")
+    //         PressedUp();
+    // }
 
-    void OnDataReceived(string data, UduinoDevice deviceName)
+    public void Data()
     {
-        if (data == "1")
-            PressedDown();
-        else if (data == "0")
-            PressedUp();
+        Debug.Log("sdf");
     }
 
     // Solution 2 
     
-    /*
+    
     void Awake()
     {
         UduinoManager.Instance.OnBoardConnected += OnBoardConnected; //Create the Delegate
@@ -39,12 +44,9 @@ public class ButtonTrigger : MonoBehaviour
 
     void ButtonTriggerEvt(string data)
     {
-        if (data == "1")
-            PressedDown();
-        else if (data == "0")
-            PressedUp();
+       Debug.Log("recieved");
     }
-    */
+    
 
 
 
@@ -52,11 +54,13 @@ public class ButtonTrigger : MonoBehaviour
     {
         button.GetComponent<Renderer>().material.color = Color.red;
         button.transform.Translate(Vector3.down / 10);
+        Debug.Log("down");
     }
 
     void PressedUp()
     {
         button.GetComponent<Renderer>().material.color = Color.green;
         button.transform.Translate(Vector3.up / 10);
+        Debug.Log("up");
     }
 }
