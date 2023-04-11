@@ -5,6 +5,7 @@ public class EventManager : MonoBehaviour
 {
     public static EventManager Instance { get; private set; } // экземпляр синглтона
     public event Action OnRotate; // событие для поворота объекта
+    public bool isDead = false;
 
     private void Awake()
     {
@@ -34,5 +35,15 @@ public class EventManager : MonoBehaviour
     public void InvokeRotateEvent()
     {
         OnRotate?.Invoke();
+    }
+
+    public void PlayerDeath()
+    { 
+        if(!isDead)
+        {
+            isDead = true;
+            Debug.Log("death");
+        }
+        
     }
 }

@@ -150,7 +150,7 @@ public class ArduinoManager : MonoBehaviour
         //update values
         p1Slider.value = HorizontalInput;
         p1Text.text = ""+HorizontalInput;
-        p1DiffText.text = p1diffCurrent.ToString();
+        
     }
 
     public void ResetGame()
