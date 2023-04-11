@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Uduino;
 
 public class Dot : MonoBehaviour
@@ -9,11 +8,6 @@ public class Dot : MonoBehaviour
     [SerializeField] ArduinoManager _arduinoManager;
     [SerializeField] private LayerMask wallLayer;
     [Space]
-    [SerializeField] private Text _textVert;
-    [SerializeField] private Slider _sliderVert;
-    [Space]
-    [SerializeField] private Text _textHor;
-    [SerializeField] private Slider _sliderHor;
     public float factorX;
     public float factorY;
     private float halfDotDimention = 0.5f;
@@ -25,17 +19,16 @@ public class Dot : MonoBehaviour
     private int verticallInput = 0;
     private int prevVerticalInput;
     private int verticalValue = 0;
+
     //horizontal input
-    private int horizontalInput = 0;
-    private int prevhorizontalInput;
-    private int horizontalValue = 0;
+    private float horizontalInput = 0f;
+    private float prevhorizontalInput;
+    private float horizontalValue = 0;
     
 
     private void OnEnable()
     {
         isFirstLaunch = true;
-        //factorX = 0.5f;
-        //factorY = 0.3f;
     }
    
 
@@ -52,27 +45,34 @@ public class Dot : MonoBehaviour
             verticalValue = 0;
             horizontalValue = 0;
 
-            _textVert.text = "vertical = " + verticallInput;
-            _sliderVert.value = (float)verticallInput / 1000.0f;
+            //_textVert.text = "vertical = " + verticallInput;
+            //_sliderVert.value = (float)verticallInput / 1000.0f;
 
-            _textHor.text = "horizontal = " + horizontalInput;
-            _sliderHor.value = (float)horizontalInput / 1000.0f;
+            //_textHor.text = "horizontal = " + horizontalInput;
+            //_sliderHor.value = (float)horizontalInput / 1000.0f;
 
-            verticallInput = _arduinoManager.VerticalControl;
-            verticalValue = verticallInput - prevVerticalInput; //величина перемещения
-            if(isFirstLaunch)
+            //verticallInput = _arduinoManager.VerticalInput;
+            //verticalValue = verticallInput - prevVerticalInput; //величина перемещения
+            //if(isFirstLaunch)
+            //{
+            //    verticalValue = 0;
+            //    //isFirstLaunch = false;
+            //}
+            //if (verticalValue > 0)
+            //    MoveUpDown(Vector3.up, verticalValue);
+            //if (verticalValue < 0)
+            //    MoveUpDown(Vector3.down, verticalValue);
+
+            horizontalInput = _arduinoManager.HorizontalInput;
+            horizontalValue = horizontalInput - prevhorizontalInput;
+   
+            if (horizontalValue > 0.1f)
             {
-                verticalValue = 0;
-                //isFirstLaunch = false;
+                horizontalValue = prevhorizontalInput;
+                Debug.Log("щелчок");
             }
-            if (verticalValue > 0)
-                MoveUpDown(Vector3.up, verticalValue);
-            if (verticalValue < 0)
-                MoveUpDown(Vector3.down, verticalValue);
-
-            horizontalInput = _arduinoManager.HorizontalControl;
-            horizontalValue = horizontalInput - prevhorizontalInput; //величина перемещения
-            if(isFirstLaunch)
+            //величина перемещения
+            if (isFirstLaunch)
             {
                 horizontalValue = 0;
                 isFirstLaunch = false; //отключаем здесь, чтобы сработало в двух условиях
@@ -88,7 +88,7 @@ public class Dot : MonoBehaviour
         }
     }
 
-    private void MoveRightLeft(Vector3 dir, int moveVal)
+    private void MoveRightLeft(Vector3 dir, float moveVal)
     {
         Vector3 newPos = transform.position + dir * Time.deltaTime * moveVal * factorX;
         float dirLength = Mathf.Abs(newPos.x - transform.position.x);
