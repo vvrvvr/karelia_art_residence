@@ -15,8 +15,8 @@ public class Display2Manager : MonoBehaviour
 
 
     // vals;
-    private float xBound = 5.8f;
-    private float yBound = 3.8f;
+    private float xBound = 6f;
+    private float yBound = 6f;
     private float xMin;
     private float xMax;
     private float yMin;
