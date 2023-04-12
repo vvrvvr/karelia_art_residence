@@ -6,6 +6,10 @@ public class EventManager : MonoBehaviour
     public static EventManager Instance { get; private set; } // экземпляр синглтона
     public event Action OnRotate; // событие для поворота объекта
     public bool isDead = false;
+    [SerializeField] private GameObject dotObject;
+    private Transform dotTransform;
+    [SerializeField] private Dot dotScript;
+    [SerializeField] private GameObject deathParticle;
 
     private void Awake()
     {
@@ -19,6 +23,10 @@ public class EventManager : MonoBehaviour
         {
             Destroy(gameObject); // если синглтон уже существует, удаляем этот объект
         }
+    }
+    private void Start()
+    {
+        dotTransform = dotObject.transform;
     }
 
     private void Update()
@@ -41,7 +49,10 @@ public class EventManager : MonoBehaviour
     { 
         if(!isDead)
         {
+            dotScript.hasControl = false;
             isDead = true;
+            Instantiate(deathParticle, dotTransform.position, Quaternion.identity);
+            dotObject.SetActive(false);
             Debug.Log("death");
         }
         

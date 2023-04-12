@@ -7364,6 +7364,17 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &876363296 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3579458027770441975, guid: 78e829e3effd2f24aaf40503539bc529, type: 3}
+  m_PrefabInstance: {fileID: 3579458028641013481}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876363288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2e0013f183d38842939b4e5e6bbbfd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &885522803
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7878,6 +7889,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
+  dotObject: {fileID: 876363288}
+  dotScript: {fileID: 876363296}
+  deathParticle: {fileID: 679734086037513813, guid: d5848d1807d69f341881e169951e22c1, type: 3}
 --- !u!1001 &980893076
 PrefabInstance:
   m_ObjectHideFlags: 0
