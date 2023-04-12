@@ -7892,6 +7892,8 @@ MonoBehaviour:
   dotObject: {fileID: 876363288}
   dotScript: {fileID: 876363296}
   deathParticle: {fileID: 679734086037513813, guid: d5848d1807d69f341881e169951e22c1, type: 3}
+  display2Cam: {fileID: 965398698}
+  display2Manager: {fileID: 1637945838}
 --- !u!1001 &980893076
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12872,6 +12874,7 @@ MonoBehaviour:
   - {fileID: 1562825176}
   _currentDistance: 0
   _maxDistance: 0
+  _eventManager: {fileID: 979509360}
 --- !u!1001 &1638956074
 PrefabInstance:
   m_ObjectHideFlags: 0

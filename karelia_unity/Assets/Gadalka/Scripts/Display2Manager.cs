@@ -21,6 +21,8 @@ public class Display2Manager : MonoBehaviour
     private float xMax;
     private float yMin;
     private float yMax;
+    private float dotX;
+    private float dotY;
 
     private int currentLevel = 0;
 
@@ -30,6 +32,7 @@ public class Display2Manager : MonoBehaviour
     private Transform _dotPosition;
     private Transform _finishPoition;
 
+    [SerializeField] private EventManager _eventManager;
 
 
 
@@ -103,24 +106,31 @@ public class Display2Manager : MonoBehaviour
     }
 
 
-    private void SetStartPosition()
+    public void SetStartPosition()
     {
         StartCoroutine(WaitToSetDot());
-        var dotX = Choose(xMax, xMin);
-        var dotY = Choose(yMax, yMin);
+        dotX = Choose(xMax, xMin);
+        dotY = Choose(yMax, yMin);
         var finishX = dotX * -1;
         var finishY = dotY * -1;
         //размещаем точку и финиш на экране
         _dot.transform.position = new Vector3(dotX, dotY, 0f);
         _finish.transform.position = new Vector3(finishX, finishY, 0f);
+        _finish.SetActive(true);
         _maxDistance = Vector3.Distance(_dot.transform.position, _finish.transform.position);
+    }
+    public void ResetPlayerPosition()
+    {
+        _dotPosition.position = new Vector3(dotX, dotY, 0f);
+        StartCoroutine(WaitToSetDot());
     }
 
     private IEnumerator WaitToSetDot()
     {
         yield return new WaitForSeconds(1f);
         _dot.SetActive(true);
-        _finish.SetActive(true);
+        _dot.GetComponent<Dot>().hasControl = true;
+        _eventManager.isDead = false;
     }
 
     private float Choose(float val1, float val2)

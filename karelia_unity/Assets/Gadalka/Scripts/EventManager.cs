@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using DG.Tweening;
 
 public class EventManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class EventManager : MonoBehaviour
     private Transform dotTransform;
     [SerializeField] private Dot dotScript;
     [SerializeField] private GameObject deathParticle;
+    [SerializeField] private Camera display2Cam;
+    [SerializeField] private Display2Manager display2Manager;
 
     private void Awake()
     {
@@ -53,6 +56,8 @@ public class EventManager : MonoBehaviour
             isDead = true;
             Instantiate(deathParticle, dotTransform.position, Quaternion.identity);
             dotObject.SetActive(false);
+            display2Cam.DOShakePosition(0.5f, 0.5f, 10, 45);
+            display2Manager.ResetPlayerPosition();
             Debug.Log("death");
         }
         
