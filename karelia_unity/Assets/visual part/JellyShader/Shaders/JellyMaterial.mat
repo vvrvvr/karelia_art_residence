@@ -22,21 +22,21 @@ Material:
     m_TexEnvs:
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: f2aff80574802eb4dabbce2988cb2067, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Scale: {x: 1.3, y: 0.94}
+        m_Offset: {x: 0.32, y: 0}
     m_Ints: []
     m_Floats:
-    - _Amplitude: 0.6
+    - _Amplitude: 2.3
     - _ControlTime: 1.36
-    - _Frequency: 41
-    - _Glossiness: 0.5
-    - _ImpactSpeed: 3.8
-    - _MaxWaveDistortion: 0.51
-    - _Metallic: 0
-    - _WaveFalloff: 3.22
-    - _WaveSpeed: -4.9
+    - _Frequency: 18
+    - _Glossiness: 0.289
+    - _ImpactSpeed: 4.07
+    - _MaxWaveDistortion: 0.93
+    - _Metallic: 0.233
+    - _WaveFalloff: 1
+    - _WaveSpeed: -0.6
     m_Colors:
     - _Color: {r: 0.34153798, g: 0.7924528, b: 0.3095051, a: 1}
     - _ImpactOrigin: {r: -5, g: 0, b: 0, a: 0}
-    - _ModelOrigin: {r: 0.13, g: 0, b: 0, a: 0}
+    - _ModelOrigin: {r: 0.13, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

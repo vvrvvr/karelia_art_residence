@@ -7,7 +7,7 @@ public class WarpingFilter : SimpleFilter
     [Range(1, 10)]
     [SerializeField]
     private float _amplitude = 5;
-    [Range(1, 50)]
+    [Range(0, 50)]
     [SerializeField]
     private float _speed = 15;
 
