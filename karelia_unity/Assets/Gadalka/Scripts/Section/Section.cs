@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-    
+
 
 public class Section : MonoBehaviour
 {
@@ -13,10 +13,13 @@ public class Section : MonoBehaviour
     [SerializeField] private Transform collidersTriggers;
     [SerializeField] private Transform colliders;
     [SerializeField] private CheckColliders checkColliders;
-   
+    [SerializeField] private Material spriteMaterial;
+    private float fadeTime;
+
 
     private void Start()
     {
+        fadeTime = rotationTime / 2;
         eventManager = FindObjectOfType<EventManager>();
         eventManager.OnRotate += StartRotate;
     }
@@ -29,7 +32,7 @@ public class Section : MonoBehaviour
     private void Rotate()
     {
         isRotating = true;
-
+        ChangeTransparencyWithTween();
         // используем метод RotateAround для поворота объекта с помощью DOTween
         sprites.DORotate(new Vector3(0, 0, sprites.rotation.eulerAngles.z - 90), rotationTime)
             .OnComplete(() => { isRotating = false; });
@@ -39,9 +42,20 @@ public class Section : MonoBehaviour
     }
     private void StartRotate()
     {
-        if(!isRotating)
+        if (!isRotating)
         {
             Rotate();
         }
+    }
+
+    public void ChangeTransparencyWithTween()
+    {
+        var tween1 = spriteMaterial.DOFade(0.4f, fadeTime-0.05f);
+        var tween2 = spriteMaterial.DOFade(1f, fadeTime-0.1f).SetDelay(fadeTime);
+
+        // Последовательность из двух твинов, которые запускаются один за другим
+        Sequence sequence = DOTween.Sequence();
+        sequence.Append(tween1);
+        sequence.Append(tween2);
     }
 }

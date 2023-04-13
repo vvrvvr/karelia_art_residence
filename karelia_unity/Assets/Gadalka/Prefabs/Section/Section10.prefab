@@ -53,6 +53,7 @@ MonoBehaviour:
   collidersTriggers: {fileID: 6144076302528770601}
   colliders: {fileID: 6144076303769029515}
   checkColliders: {fileID: 6144076302528770602}
+  spriteMaterial: {fileID: 2100000, guid: 80375e67be7df244b89beb06d507b180, type: 2}
 --- !u!1 &6144076302528770600
 GameObject:
   m_ObjectHideFlags: 0

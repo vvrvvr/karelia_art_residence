@@ -208,6 +208,7 @@ MonoBehaviour:
   collidersTriggers: {fileID: 901860700890208478}
   colliders: {fileID: 901860699446255996}
   checkColliders: {fileID: 901860700890208477}
+  spriteMaterial: {fileID: 2100000, guid: 80375e67be7df244b89beb06d507b180, type: 2}
 --- !u!1001 &429120643345450225
 PrefabInstance:
   m_ObjectHideFlags: 0

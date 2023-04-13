@@ -26,9 +26,9 @@ Material:
         m_Offset: {x: 0.32, y: 0}
     m_Ints: []
     m_Floats:
-    - _Amplitude: 2.3
+    - _Amplitude: 0
     - _ControlTime: 1.36
-    - _Frequency: 18
+    - _Frequency: 103
     - _Glossiness: 0.289
     - _ImpactSpeed: 4.07
     - _MaxWaveDistortion: 0.93
