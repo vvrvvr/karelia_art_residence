@@ -26,7 +26,8 @@ public class CheckColliders : MonoBehaviour
         {
             collider.SetActive(true);
         }
-        StartCoroutine(WaitAndTurnOff());
+        if(this.gameObject.activeSelf)
+            StartCoroutine(WaitAndTurnOff());
     }
     private IEnumerator WaitAndTurnOff()
     {

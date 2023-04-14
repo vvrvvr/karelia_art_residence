@@ -12,7 +12,7 @@ Shader "Custom/JellyShader" {
 		_ImpactOrigin ("Impact Origin", Vector) = (-5,0,0,0)
 
 		_Frequency ("Frequency", Range(0, 1000)) = 10
-		_Amplitude ("Amplitude", Range(0, 5)) = 0.1
+		_Amplitude ("Amplitude", Range(0, 200)) = 0.1
 		_WaveFalloff ("Wave Falloff", Range(1, 8)) = 4
 		_MaxWaveDistortion ("Max Wave Distortion", Range(0.1, 2.0)) = 1
 		_ImpactSpeed ("Impact Speed", Range(0, 10)) = 0.5

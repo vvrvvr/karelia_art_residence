@@ -44,9 +44,9 @@ public class Display2Manager : MonoBehaviour
         yMin = -yBound;
         yMax = yBound;
 
-        ResetDisplay2();
         _dotPosition = _dot.transform;
         _finishPoition = _finish.transform;
+        ResetDisplay2();
     }
 
     private void Update()
@@ -61,6 +61,7 @@ public class Display2Manager : MonoBehaviour
         {
             ResetDisplay2();
         }
+
         //что-то делаем
 
         //set prev values
@@ -70,6 +71,10 @@ public class Display2Manager : MonoBehaviour
 
 
     public void StartGame()
+    {
+
+    }
+    public void EndGame()
     {
 
     }
@@ -94,7 +99,7 @@ public class Display2Manager : MonoBehaviour
         _finish.SetActive(false);
         if (currentLevel >= levels.Length)
         {
-            //finish game
+            EndGame();
             return;
         }
         for (int i = 0; i < levels.Length; i++)
