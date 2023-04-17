@@ -59,7 +59,7 @@ public class ArduinoManager : MonoBehaviour
     {
         //potentiometers
         _uduino.pinMode(AnalogPin.A1, PinMode.Input_pullup);
-        _uduino.pinMode(AnalogPin.A2, PinMode.Input_pullup);
+        _uduino.pinMode(AnalogPin.A3, PinMode.Input_pullup);
 
         // //buttons
         _uduino.pinMode(3, PinMode.Input);
@@ -80,7 +80,7 @@ public class ArduinoManager : MonoBehaviour
         {
             //potentiometers
             potentiometer1 = _uduino.analogRead(AnalogPin.A1);
-            potentiometer2 = _uduino.analogRead(AnalogPin.A2);
+            potentiometer2 = _uduino.analogRead(AnalogPin.A3);
             
             // //buttons
             b3Current = _uduino.digitalRead(3);

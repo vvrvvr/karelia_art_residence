@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 479a7432c78add14f87841bf50afc9e1, type: 3}
   m_Name: HueShift3D
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
@@ -122,17 +122,17 @@ MonoBehaviour:
     value: 1
   gradientTex:
     overrideState: 1
-    value: {fileID: 2800000, guid: 7654b93613b327248938129ff15680e6, type: 3}
+    value: {fileID: 2800000, guid: 8bd158bf28fbf3d4cb9151f3c3ae5516, type: 3}
     defaultState: 1
   intensity:
     overrideState: 1
-    value: 0.889
+    value: 0.167
   speed:
     overrideState: 1
     value: 0.029
   size:
     overrideState: 1
-    value: 2.93
+    value: 1.48
   geoInfluence:
     overrideState: 0
     value: 5

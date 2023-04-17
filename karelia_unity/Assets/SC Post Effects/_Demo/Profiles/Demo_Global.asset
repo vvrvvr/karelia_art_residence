@@ -19,6 +19,7 @@ MonoBehaviour:
   - {fileID: 114667756878169482}
   - {fileID: 114146875060944256}
   - {fileID: 1313593117022968608}
+  - {fileID: 706375194115496081}
 --- !u!114 &114013995337387024
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -594,7 +595,7 @@ MonoBehaviour:
     value: 1
   softKnee:
     overrideState: 1
-    value: 0.754
+    value: 0.483
   clamp:
     overrideState: 0
     value: 65472
@@ -772,15 +773,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b94fcd11afffcb142908bfcb1e261fba, type: 3}
   m_Name: MotionBlur
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
   shutterAngle:
-    overrideState: 0
-    value: 270
+    overrideState: 1
+    value: 209
   sampleCount:
-    overrideState: 0
+    overrideState: 1
     value: 10
 --- !u!114 &114546480033635570
 MonoBehaviour:
@@ -2762,6 +2763,55 @@ MonoBehaviour:
   geoInfluence:
     overrideState: 0
     value: 5
+--- !u!114 &706375194115496081
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1e1b3a3f18dad1429c9ecc7e1db2274, type: 3}
+  m_Name: Sunshafts
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  useCasterColor:
+    overrideState: 1
+    value: 1
+  useCasterIntensity:
+    overrideState: 1
+    value: 0
+  sunShaftIntensity:
+    overrideState: 1
+    value: 0.93
+  blendMode:
+    overrideState: 1
+    value: 1
+  resolution:
+    overrideState: 1
+    value: 2
+  highQuality:
+    overrideState: 1
+    value: 0
+  sunThreshold:
+    overrideState: 1
+    value: {r: 0, g: 0, b: 0, a: 1}
+  sunColor:
+    overrideState: 0
+    value: {r: 1, g: 1, b: 1, a: 1}
+  falloff:
+    overrideState: 1
+    value: 0.5
+  length:
+    overrideState: 1
+    value: 10
+  noiseStrength:
+    overrideState: 0
+    value: 0
 --- !u!114 &1313593117022968608
 MonoBehaviour:
   m_ObjectHideFlags: 3

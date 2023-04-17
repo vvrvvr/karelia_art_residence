@@ -51,7 +51,7 @@ public class Display2Manager : MonoBehaviour
 
     private void Update()
     {
-        _currentDistance = Vector3.Distance(_dotPosition.position, _finishPoition.position);
+        _currentDistance = Vector3.Distance(_dotPosition.localPosition, _finishPoition.localPosition);
 
         if(Input.GetKeyDown(KeyCode.J))
         {
@@ -119,14 +119,14 @@ public class Display2Manager : MonoBehaviour
         var finishX = dotX * -1;
         var finishY = dotY * -1;
         //размещаем точку и финиш на экране
-        _dot.transform.position = new Vector3(dotX, dotY, 0f);
-        _finish.transform.position = new Vector3(finishX, finishY, 0f);
+        _dot.transform.localPosition = new Vector3(dotX, dotY, 0f);
+        _finish.transform.localPosition = new Vector3(finishX, finishY, 0f);
         _finish.SetActive(true);
-        _maxDistance = Vector3.Distance(_dot.transform.position, _finish.transform.position);
+        _maxDistance = Vector3.Distance(_dot.transform.localPosition, _finish.transform.localPosition);
     }
     public void ResetPlayerPosition()
     {
-        _dotPosition.position = new Vector3(dotX, dotY, 0f);
+        _dotPosition.localPosition = new Vector3(dotX, dotY, 0f);
         StartCoroutine(WaitToSetDot());
     }
 

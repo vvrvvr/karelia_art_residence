@@ -21,20 +21,20 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 7654b93613b327248938129ff15680e6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9bcd2256a6522924c856e29cfe0c87ad, type: 3}
         m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 1, y: 0}
+        m_Offset: {x: 1, y: 1}
     m_Ints: []
     m_Floats:
-    - _Amplitude: 200
+    - _Amplitude: 125
     - _ControlTime: 1
-    - _Frequency: 5
-    - _Glossiness: 0.752
-    - _ImpactSpeed: 0
-    - _MaxWaveDistortion: 0.76
-    - _Metallic: 0.314
-    - _WaveFalloff: 1.43
-    - _WaveSpeed: -0.4
+    - _Frequency: 53
+    - _Glossiness: 0.577
+    - _ImpactSpeed: 1.3
+    - _MaxWaveDistortion: 0.13
+    - _Metallic: 0.611
+    - _WaveFalloff: 1
+    - _WaveSpeed: 3.7
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ImpactOrigin: {r: 1, g: 1, b: 1, a: 0}

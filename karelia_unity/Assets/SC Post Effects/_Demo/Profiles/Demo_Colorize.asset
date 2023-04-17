@@ -24,7 +24,7 @@ MonoBehaviour:
     value: 1
   colorRamp:
     overrideState: 1
-    value: {fileID: 2800000, guid: 33f1e29958f0470408dcdccdbc83359e, type: 3}
+    value: {fileID: 2800000, guid: 65be92992d038cc4c8223983d386aa24, type: 3}
     defaultState: 1
 --- !u!114 &11400000
 MonoBehaviour:
