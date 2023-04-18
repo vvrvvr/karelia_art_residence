@@ -33,12 +33,12 @@ public class Section : MonoBehaviour
     {
         isRotating = true;
         ChangeTransparencyWithTween();
-        // используем метод RotateAround для поворота объекта с помощью DOTween
-        sprites.DORotate(new Vector3(0, 0, sprites.rotation.eulerAngles.z - 90), rotationTime)
+        // используем метод DOLocalRotate для поворота объекта в локальных координатах
+        sprites.DOLocalRotate(new Vector3(0, 0, sprites.localRotation.eulerAngles.z - 90), rotationTime)
             .OnComplete(() => { isRotating = false; });
-        collidersTriggers.DORotate(new Vector3(0, 0, collidersTriggers.rotation.eulerAngles.z - 90), 0)
+        collidersTriggers.DOLocalRotate(new Vector3(0, 0, collidersTriggers.localRotation.eulerAngles.z - 90), 0)
             .OnComplete(() => { checkColliders.CheckCollision(); });
-        colliders.DORotate(new Vector3(0, 0, colliders.rotation.eulerAngles.z - 90), 0);
+        colliders.DOLocalRotate(new Vector3(0, 0, colliders.localRotation.eulerAngles.z - 90), 0);
     }
     private void StartRotate()
     {
