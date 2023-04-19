@@ -10,6 +10,7 @@ public class Display2Manager : MonoBehaviour
     [SerializeField] GameObject _finish;
     [SerializeField] ArduinoManager _arduinoManager;
     [SerializeField] private ModelsManager _modelsManager;
+    [SerializeField] private GameObject resetTimeline;
 
     //levels
     [SerializeField] GameObject[] levels = new GameObject[3];
@@ -96,6 +97,7 @@ public class Display2Manager : MonoBehaviour
         levels[currentLevel].SetActive(true);
         SetStartPosition();
         _modelsManager.SetStartValues();
+        resetTimeline.SetActive(true);
     }
 
     public void ChangeLevel()
@@ -147,7 +149,9 @@ public class Display2Manager : MonoBehaviour
 
     private IEnumerator WaitToSetDot()
     {
+        Debug.Log("before");
         yield return new WaitForSeconds(1f);
+        Debug.Log("after");
         _dot.SetActive(true);
         _dot.GetComponent<Dot>().hasControl = true;
         _eventManager.isDead = false;

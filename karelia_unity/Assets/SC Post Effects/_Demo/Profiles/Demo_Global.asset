@@ -18,7 +18,6 @@ MonoBehaviour:
   - {fileID: 114511917610420314}
   - {fileID: 114667756878169482}
   - {fileID: 114146875060944256}
-  - {fileID: 1313593117022968608}
   - {fileID: 706375194115496081}
   - {fileID: 7324196972869096663}
 --- !u!114 &114013995337387024
@@ -2322,7 +2321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b924e2dad56384a8df2a1e111bb675, type: 3}
   m_Name: Vignette
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
@@ -2813,28 +2812,6 @@ MonoBehaviour:
   noiseStrength:
     overrideState: 0
     value: 0
---- !u!114 &1313593117022968608
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7969232a53c3c2148a7764600324f3ae, type: 3}
-  m_Name: TubeDistortion
-  m_EditorClassIdentifier: 
-  active: 0
-  enabled:
-    overrideState: 1
-    value: 1
-  mode:
-    overrideState: 1
-    value: 2
-  amount:
-    overrideState: 1
-    value: 0.996
 --- !u!114 &7324196972869096663
 MonoBehaviour:
   m_ObjectHideFlags: 3
