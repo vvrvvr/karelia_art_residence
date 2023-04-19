@@ -107,6 +107,7 @@ public class Display2Manager : MonoBehaviour
         _finish.SetActive(false);
         if (currentLevel >= levels.Length)
         {
+            levels[levels.Length - 1].SetActive(false);
             EndGame();
             return;
         }

@@ -20,6 +20,9 @@ public class ModelsManager : MonoBehaviour
     public float _currentMin;
     public float _currentMax;
     public float _amplitudeSection;
+    public float _currentDistance;
+
+    //public float testTest = 0;
 
     public bool isShaderWorking = false;
 
@@ -29,7 +32,7 @@ public class ModelsManager : MonoBehaviour
         CollectModels();
         currentCount = Random.Range(0, maxCount);
         currentTextureCount = Random.Range(0, modelsTextures.Length-1);
-
+        _currentDistance = display2Manager._currentDistance;
         //material
        // SetStartValues();
 
@@ -56,11 +59,18 @@ public class ModelsManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.U))
         {
             GetRandomModel();
-            //material.SetFloat("_Amplitude", 150f);
         }
+        HandleAmplitudeValues();
     }
 
-   
+    private void HandleAmplitudeValues()
+    {
+        if(isShaderWorking)
+        {
+            var val = ConvertNumber(display2Manager._currentDistance);
+            material.SetFloat("_Amplitude", val);
+        }
+    }
 
     public float ConvertNumber(float number)
     {
