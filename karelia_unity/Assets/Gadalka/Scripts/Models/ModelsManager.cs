@@ -8,22 +8,65 @@ public class ModelsManager : MonoBehaviour
     [SerializeField] private GameObject models;
     [SerializeField] private Texture[] modelsTextures = new Texture[0];
     [SerializeField] private Material material;
+    [SerializeField] private Display2Manager display2Manager;
     private int currentCount = 0;
     private int currentTextureCount = 0;
     private int maxCount;
+
+    [SerializeField] private float maxAmplitude;
+
+    public float _minDistance = 0f;
+    public float _maxDistance = 0f;
+    public float _currentMin;
+    public float _currentMax;
+    public float _amplitudeSection;
+
+    public bool isShaderWorking = false;
+
     void Start()
     {
+        //models
         CollectModels();
         currentCount = Random.Range(0, maxCount);
         currentTextureCount = Random.Range(0, modelsTextures.Length-1);
+
+        //material
+       // SetStartValues();
+
+
     }
+    public void ChangeLevelValues()
+    {
+        _currentMax = _currentMin;
+        _currentMin = _currentMin - _amplitudeSection;
+        if (_currentMin < 10)
+            _currentMin = 0f;
+    }
+
+    public void SetStartValues()
+    {
+        _currentMax = maxAmplitude;
+        _amplitudeSection = _currentMax / display2Manager.GetLevelsLength();
+        _currentMin = _currentMax - _amplitudeSection;
+    }
+
     private void Update()
     {
         
         if (Input.GetKeyDown(KeyCode.U))
         {
             GetRandomModel();
+            //material.SetFloat("_Amplitude", 150f);
         }
+    }
+
+   
+
+    public float ConvertNumber(float number)
+    {
+        float convertedNumber = Mathf.InverseLerp(_minDistance, _maxDistance, number);
+        convertedNumber = Mathf.Lerp(_currentMin, _currentMax, convertedNumber);
+        return convertedNumber;
     }
 
     private void CollectModels()
@@ -45,6 +88,7 @@ public class ModelsManager : MonoBehaviour
             Debug.Log("модели не найдены");
         }
     }
+    
     public void GetRandomModel()
     {
         int newCount = Random.Range(0, modelArray.Length -1 );
@@ -58,7 +102,8 @@ public class ModelsManager : MonoBehaviour
         currentCount = newCount;
         modelArray[newCount].SetActive(true);
     }
-    public void GetRandomTexture()
+    
+    private void GetRandomTexture()
     {
         int newCount = Random.Range(0, modelsTextures.Length - 1);
 

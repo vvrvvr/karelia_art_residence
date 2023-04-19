@@ -9,6 +9,7 @@ public class Display2Manager : MonoBehaviour
     [SerializeField] GameObject _dot;
     [SerializeField] GameObject _finish;
     [SerializeField] ArduinoManager _arduinoManager;
+    [SerializeField] private ModelsManager _modelsManager;
 
     //levels
     [SerializeField] GameObject[] levels = new GameObject[3];
@@ -69,6 +70,10 @@ public class Display2Manager : MonoBehaviour
 
     }
 
+    public  int GetLevelsLength()
+    {
+        return levels.Length;
+    }
 
     public void StartGame()
     {
@@ -90,10 +95,13 @@ public class Display2Manager : MonoBehaviour
         }
         levels[currentLevel].SetActive(true);
         SetStartPosition();
+        _modelsManager.SetStartValues();
     }
 
     public void ChangeLevel()
     {
+        _modelsManager.isShaderWorking = false;
+
         currentLevel++;
         _dot.SetActive(false);
         _finish.SetActive(false);
@@ -107,7 +115,9 @@ public class Display2Manager : MonoBehaviour
             levels[i].SetActive(false);
         }
         levels[currentLevel].SetActive(true);
+        
         SetStartPosition();
+        _modelsManager.ChangeLevelValues(); 
     }
 
 
@@ -122,7 +132,11 @@ public class Display2Manager : MonoBehaviour
         _dot.transform.localPosition = new Vector3(dotX, dotY, 0f);
         _finish.transform.localPosition = new Vector3(finishX, finishY, 0f);
         _finish.SetActive(true);
+
+        //set distance and send it to models manager
         _maxDistance = Vector3.Distance(_dot.transform.localPosition, _finish.transform.localPosition);
+        _modelsManager._maxDistance = _maxDistance;
+        _modelsManager.isShaderWorking = true;
     }
     public void ResetPlayerPosition()
     {

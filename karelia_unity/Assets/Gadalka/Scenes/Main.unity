@@ -10115,6 +10115,14 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 7022f34396d32c24592def803c26f6e1, type: 3}
   - {fileID: 2800000, guid: aa0a090f5eea09a4fba56b9ba6699284, type: 3}
   material: {fileID: 2100000, guid: 5e20463e1312b8f43b99301c132f0122, type: 2}
+  display2Manager: {fileID: 1637945838}
+  maxAmplitude: 150
+  _minDistance: 0
+  _maxDistance: 10
+  _currentMin: 0
+  _currentMax: 0
+  _amplitudeSection: 0
+  isShaderWorking: 0
 --- !u!1001 &980725715
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16652,6 +16660,7 @@ MonoBehaviour:
   _dot: {fileID: 876363288}
   _finish: {fileID: 2086702043}
   _arduinoManager: {fileID: 759993364}
+  _modelsManager: {fileID: 979509361}
   levels:
   - {fileID: 1478833517}
   - {fileID: 982373917}
