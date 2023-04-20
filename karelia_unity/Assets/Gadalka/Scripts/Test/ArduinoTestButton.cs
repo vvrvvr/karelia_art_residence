@@ -70,6 +70,8 @@ public class ArduinoTestButton : MonoBehaviour
         }
     }
    
+
+       
     public void DataRecieve()
     {
         Debug.Log("data recieved");

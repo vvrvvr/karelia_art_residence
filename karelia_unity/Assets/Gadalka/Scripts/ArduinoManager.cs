@@ -7,9 +7,10 @@ using Uduino;
 public class ArduinoManager : MonoBehaviour
 {
     [SerializeField] private Text p1Text;
-    [SerializeField] private Text p1DiffText;
     [SerializeField] private Slider p1Slider;
-    
+    [SerializeField] private Text p2Text;
+    [SerializeField] private Slider p2Slider;
+
     [SerializeField] private Display2Manager _display2Manager;
     private UduinoManager _uduino;
     private bool isBoardConnected = true;
@@ -22,7 +23,7 @@ public class ArduinoManager : MonoBehaviour
     [SerializeField] private int p1MaxValue = 100;
     [Space(10)]
     public float HorizontalInput;
-    public int VerticalInput;
+    public float VerticalInput;
 
     private int potentiometer2;
 
@@ -34,7 +35,7 @@ public class ArduinoManager : MonoBehaviour
     [HideInInspector] public int b7Current;
 
     [HideInInspector] public float p1Prev = 0;
-    [HideInInspector] public int p2Prev = 0;
+    [HideInInspector] public float p2Prev = 0;
     [HideInInspector] public int b3Prev = 0;
     [HideInInspector] public int b5Prev = 0;
     [HideInInspector] public int b7Prev = 0;
@@ -45,7 +46,7 @@ public class ArduinoManager : MonoBehaviour
     
     [HideInInspector] public float p1diffCurrent = 0;
 
-    private float p1diffCurrentPrev = 0;
+    //private float p1diffCurrentPrev = 0;
 
     private void Awake()
     {
@@ -62,9 +63,9 @@ public class ArduinoManager : MonoBehaviour
         _uduino.pinMode(AnalogPin.A3, PinMode.Input_pullup);
 
         // //buttons
-        _uduino.pinMode(3, PinMode.Input);
-        _uduino.pinMode(5, PinMode.Input);
-        _uduino.pinMode(7, PinMode.Input);
+        _uduino.pinMode(3, PinMode.Input_pullup);
+        _uduino.pinMode(5, PinMode.Input_pullup);
+        _uduino.pinMode(7, PinMode.Input_pullup);
         //
         // //krab
         // _uduino.pinMode(AnalogPin.A0, PinMode.Input);
@@ -97,14 +98,14 @@ public class ArduinoManager : MonoBehaviour
 
             // set previous values
             p1Prev = HorizontalInput;
-            p2Prev = potentiometer2;
+            p2Prev = VerticalInput;
 
             b3Prev = b3Current;
             b5Prev = b5Current;
             b7Prev = b7Current;
 
-            p1diffCurrentPrev = p1diffCurrent;
-            p1diffCurrent = 0;
+            //p1diffCurrentPrev = p1diffCurrent;
+            //p1diffCurrent = 0;
         }
         else
         {
@@ -124,33 +125,48 @@ public class ArduinoManager : MonoBehaviour
             potentiometer1 = p1Max;
         }
         HorizontalInput =  Mathf.InverseLerp(p1Min, p1Max, potentiometer1);
+
         if (Mathf.Abs(HorizontalInput - p1Prev) > 0.7f)
         {
             HorizontalInput = p1Prev;
             //добавить звук щелчка
         }
-        
-        p1diffCurrent = HorizontalInput - p1Prev;
-        //Debug.Log(p1diffCurrent);   
-        if(p1diffCurrent > 0.3f)
-        {
-            p1diffCurrent = p1diffCurrentPrev;
-            Debug.Log("щелчок");
-        }
-        //if (p1diffCurrent != 0)
+
+
+        //p1diffCurrent = HorizontalInput - p1Prev;
+        ////Debug.Log(p1diffCurrent);   
+        //if(p1diffCurrent > 0.3f)
         //{
-        //    Debug.Log(p1diffCurrent.ToString());
-
+        //    p1diffCurrent = p1diffCurrentPrev;
+        //    Debug.Log("щелчок");
         //}
-        //
-        
 
-        VerticalInput = potentiometer2;
+        if (potentiometer2 < p1Min)
+        {
+            potentiometer2 = p1Min;
+        }
+        if (potentiometer2 > p1Max)
+        {
+            potentiometer2 = p1Max;
+        }
+        VerticalInput = Mathf.InverseLerp(p1Min, p1Max, potentiometer2);
+
+        if (Mathf.Abs(HorizontalInput - p2Prev) > 0.7f)
+        {
+            VerticalInput = p2Prev;
+            //добавить звук щелчка
+        }
+
+
+         
 
         //update values
         p1Slider.value = HorizontalInput;
         p1Text.text = ""+HorizontalInput;
-        
+
+        p2Slider.value = VerticalInput;
+        p2Text.text = "" + VerticalInput;
+
     }
 
     public void ResetGame()

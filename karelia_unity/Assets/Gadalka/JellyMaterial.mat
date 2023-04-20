@@ -26,7 +26,7 @@ Material:
         m_Offset: {x: 1, y: 1}
     m_Ints: []
     m_Floats:
-    - _Amplitude: 180
+    - _Amplitude: 4.7966805
     - _ControlTime: 1
     - _Frequency: 53
     - _Glossiness: 0.577

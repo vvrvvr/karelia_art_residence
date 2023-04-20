@@ -149,9 +149,9 @@ public class Display2Manager : MonoBehaviour
 
     private IEnumerator WaitToSetDot()
     {
-        Debug.Log("before");
+    
         yield return new WaitForSeconds(1f);
-        Debug.Log("after");
+       
         _dot.SetActive(true);
         _dot.GetComponent<Dot>().hasControl = true;
         _eventManager.isDead = false;
