@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class Display2Manager : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class Display2Manager : MonoBehaviour
     [SerializeField] private ModelsManager _modelsManager;
     [SerializeField] private GameObject resetTimeline;
     [SerializeField] private PlayableDirector finishTimeline;
+    [Space(10)]
+    [SerializeField] private TextMeshProUGUI messageText;
+    [SerializeField] private TextMeshProUGUI distortionText;
+    public int distortionCount = 0;
 
     //levels
     [SerializeField] GameObject[] levels = new GameObject[3];
@@ -72,22 +77,26 @@ public class Display2Manager : MonoBehaviour
             ResetDisplay2();
         }
 
-        if (canRotate)
+
+        rotateButton1Current = _arduinoManager.b3Current;
+        if (rotateButton1Current != rotateButton1Prev && rotateButton1Current == 0)
         {
-            rotateButton1Current = _arduinoManager.b3Current;
-            if (rotateButton1Current != rotateButton1Prev && rotateButton1Current == 0)
-            {
+            if (canRotate)
                 _eventManager.InvokeRotateEvent(true);
+            else
+                _cam1Anchor.DORotate(Vector3.zero, 0.5f, RotateMode.FastBeyond360);
 
-            }
-
-            rotateButton2Current = _arduinoManager.b7Current;
-            if (rotateButton2Current != rotateButton2Prev && rotateButton2Current == 0)
-            {
-                _eventManager.InvokeRotateEvent(false);
-
-            }
         }
+
+        rotateButton2Current = _arduinoManager.b7Current;
+        if (rotateButton2Current != rotateButton2Prev && rotateButton2Current == 0)
+        {
+            if (canRotate)
+                _eventManager.InvokeRotateEvent(false);
+            else
+                _cam1Anchor.DORotate(Vector3.zero, 0.5f, RotateMode.FastBeyond360);
+        }
+
 
 
         _currentDistance = Vector3.Distance(_dotPosition.localPosition, _finishPoition.localPosition);
@@ -126,6 +135,8 @@ public class Display2Manager : MonoBehaviour
         _cam1Anchor.DORotate(Vector3.zero, 0.5f, RotateMode.FastBeyond360);
         ModelsManager.Instance.SetModelMaterialAmplitude(0f);
         canRotate = false;
+        messageText.text =  ModelsManager.Instance.GetModelName();
+        distortionText.text = "Количество искажений: " + distortionCount;
     }
 
     public void ResetDisplay2()
@@ -144,6 +155,7 @@ public class Display2Manager : MonoBehaviour
         resetTimeline.SetActive(true);
         ModelsManager.Instance.GetRandomModel();
         ModelsManager.Instance.ShuffleArray();
+        distortionCount = 0;
     }
 
     public void ChangeLevel()

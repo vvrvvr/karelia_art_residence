@@ -47,6 +47,7 @@ public class EventManager : MonoBehaviour
     {
         OnRotate?.Invoke(isLeftTurn);
         ModelsManager.Instance.GetRandomModel();
+        display2Manager.distortionCount++;
     }
 
     public void PlayerDeath()

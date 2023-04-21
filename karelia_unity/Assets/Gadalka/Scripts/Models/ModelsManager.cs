@@ -69,11 +69,11 @@ public class ModelsManager : MonoBehaviour
 
     private void Update()
     {
-        
-        //if (Input.GetKeyDown(KeyCode.U))
-        //{
-        //    GetRandomModel();
-        //}
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            GetRandomModel();
+        }
         HandleAmplitudeValues();
     }
 
@@ -89,6 +89,20 @@ public class ModelsManager : MonoBehaviour
             var val = ConvertNumber(display2Manager._currentDistance);
             material.SetFloat("_Amplitude", val);
         }
+    }
+
+    public string GetModelName()
+    {
+        string name = "";
+        foreach (var model in modelArray)
+        {
+            if (model.activeSelf)
+            {
+                name = model.name;
+                break;
+            }
+        }
+        return name;
     }
 
     public float ConvertNumber(float number)

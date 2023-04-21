@@ -2957,7 +2957,7 @@ MonoBehaviour:
     value: 0
   strength:
     overrideState: 1
-    value: 0.8
+    value: 0.5
   distance:
     overrideState: 0
     value: 5
