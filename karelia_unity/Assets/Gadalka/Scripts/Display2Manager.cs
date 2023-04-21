@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class Display2Manager : MonoBehaviour
 {
-    [SerializeField] Camera _cam;
+    [SerializeField] Transform _cam1Anchor;
     [SerializeField] GameObject _dot;
     [SerializeField] GameObject _finish;
     [SerializeField] ArduinoManager _arduinoManager;
     [SerializeField] private ModelsManager _modelsManager;
     [SerializeField] private GameObject resetTimeline;
+    [SerializeField] private PlayableDirector finishTimeline;
 
     //levels
     [SerializeField] GameObject[] levels = new GameObject[3];
@@ -34,6 +37,15 @@ public class Display2Manager : MonoBehaviour
     private Transform _dotPosition;
     private Transform _finishPoition;
 
+    private int resetButtonCurrent = 0;
+    private int resetButtonPrev = 0;
+
+    private int rotateButton1Current = 0;
+    private int rotateButton1Prev = 0;
+
+    private int rotateButton2Current = 0;
+    private int rotateButton2Prev = 0;
+
     [SerializeField] private EventManager _eventManager;
 
 
@@ -53,27 +65,51 @@ public class Display2Manager : MonoBehaviour
 
     private void Update()
     {
-        _currentDistance = Vector3.Distance(_dotPosition.localPosition, _finishPoition.localPosition);
-
-        if(Input.GetKeyDown(KeyCode.J))
-        {
-            ChangeLevel();
-        }
-        if (Input.GetKeyDown(KeyCode.K))
+        resetButtonCurrent = _arduinoManager.b5Current;
+        if(resetButtonCurrent != resetButtonPrev && resetButtonCurrent == 0)
         {
             ResetDisplay2();
         }
+        
+        rotateButton1Current =_arduinoManager.b3Current;
+        if(rotateButton1Current != rotateButton1Prev && rotateButton1Current == 0)
+        {
+            _eventManager.InvokeRotateEvent(true);
+            Debug.Log("rotate 1");
+        }
+
+        rotateButton2Current = _arduinoManager.b7Current;
+        if (rotateButton2Current != rotateButton2Prev && rotateButton2Current == 0)
+        {
+            _eventManager.InvokeRotateEvent(false);
+            Debug.Log("rotate 2");
+        }
+
+
+        _currentDistance = Vector3.Distance(_dotPosition.localPosition, _finishPoition.localPosition);
+
+        //if(Input.GetKeyDown(KeyCode.J))
+        //{
+        //    ChangeLevel();
+        //}
+        //if (Input.GetKeyDown(KeyCode.K))
+        //{
+        //    ResetDisplay2();
+        //}
 
         //что-то делаем
 
         //set prev values
 
-
+        resetButtonPrev = resetButtonCurrent;
+        rotateButton1Prev = rotateButton1Current;
+        rotateButton2Prev = rotateButton2Current;
     }
 
     public  int GetLevelsLength()
     {
         return levels.Length;
+        
     }
 
     public void StartGame()
@@ -82,7 +118,9 @@ public class Display2Manager : MonoBehaviour
     }
     public void EndGame()
     {
-
+        finishTimeline.Play();
+        _cam1Anchor.DORotate(Vector3.zero, 0.5f, RotateMode.FastBeyond360);
+        ModelsManager.Instance.SetModelMaterialAmplitude(0f);
     }
 
     public void ResetDisplay2()
@@ -98,6 +136,7 @@ public class Display2Manager : MonoBehaviour
         SetStartPosition();
         _modelsManager.SetStartValues();
         resetTimeline.SetActive(true);
+        ModelsManager.Instance.GetRandomModel();
     }
 
     public void ChangeLevel()

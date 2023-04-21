@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ModelsManager : MonoBehaviour
 {
+    public static ModelsManager Instance { get; private set; } // экземпл€р синглтона
+
     private GameObject[] modelArray;
     [SerializeField] private GameObject models;
     [SerializeField] private Texture[] modelsTextures = new Texture[0];
@@ -25,7 +27,19 @@ public class ModelsManager : MonoBehaviour
     //public float testTest = 0;
 
     public bool isShaderWorking = false;
-
+    private void Awake()
+    {
+        // провер€ем, существует ли уже экземпл€р синглтона
+        if (Instance == null)
+        {
+            Instance = this; // если нет, то создаем его
+            DontDestroyOnLoad(gameObject); // сохран€ем объект между сценами
+        }
+        else
+        {
+            Destroy(gameObject); // если синглтон уже существует, удал€ем этот объект
+        }
+    }
     void Start()
     {
         //models
@@ -34,9 +48,9 @@ public class ModelsManager : MonoBehaviour
         currentTextureCount = Random.Range(0, modelsTextures.Length-1);
         _currentDistance = display2Manager._currentDistance;
         //material
-       // SetStartValues();
+        // SetStartValues();
 
-
+        GetRandomModel();
     }
     public void ChangeLevelValues()
     {
@@ -56,11 +70,16 @@ public class ModelsManager : MonoBehaviour
     private void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            GetRandomModel();
-        }
+        //if (Input.GetKeyDown(KeyCode.U))
+        //{
+        //    GetRandomModel();
+        //}
         HandleAmplitudeValues();
+    }
+
+    public void SetModelMaterialAmplitude(float val)
+    {
+        material.SetFloat("_Amplitude", val);
     }
 
     private void HandleAmplitudeValues()

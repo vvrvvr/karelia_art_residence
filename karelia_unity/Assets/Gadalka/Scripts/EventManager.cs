@@ -5,7 +5,7 @@ using DG.Tweening;
 public class EventManager : MonoBehaviour
 {
     public static EventManager Instance { get; private set; } // экземпляр синглтона
-    public event Action OnRotate; // событие для поворота объекта
+    public event Action<bool> OnRotate; // событие для поворота объекта
     public bool isDead = false;
     [SerializeField] private GameObject dotObject;
     private Transform dotTransform;
@@ -34,18 +34,19 @@ public class EventManager : MonoBehaviour
 
     private void Update()
     {
-        // проверяем, нажата ли клавиша пробела
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            // вызываем событие поворота объекта
-            OnRotate?.Invoke();
-        }
+        //// проверяем, нажата ли клавиша пробела
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    // вызываем событие поворота объекта
+        //    InvokeRotateEvent(false);
+        //}
     }
 
     // метод для явного вызова события поворота объекта
-    public void InvokeRotateEvent()
+    public void InvokeRotateEvent(bool isLeftTurn)
     {
-        OnRotate?.Invoke();
+        OnRotate?.Invoke(isLeftTurn);
+        ModelsManager.Instance.GetRandomModel();
     }
 
     public void PlayerDeath()
@@ -59,6 +60,7 @@ public class EventManager : MonoBehaviour
             display2Cam.DOShakePosition(0.5f, 0.5f, 10, 45);
             display2Manager.ResetPlayerPosition();
             Debug.Log("death");
+            ModelsManager.Instance.GetRandomModel();
         }
         
     }

@@ -6,7 +6,7 @@ public class Rotate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Rotate the object around its local X axis at 1 degree per second
-        transform.Rotate(Vector3.up * Time.deltaTime * speed);
+        Vector3 yAxis = new Vector3(0, 1, 0);
+        transform.RotateAround(Vector3.zero, yAxis, speed * Time.deltaTime);
     }
 }

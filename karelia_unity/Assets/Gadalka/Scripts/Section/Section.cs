@@ -29,22 +29,28 @@ public class Section : MonoBehaviour
         eventManager.OnRotate -= StartRotate;
     }
 
-    private void Rotate()
+    private void Rotate(bool dir)
     {
+        var rotationValue = 0;
+        if (dir)
+            rotationValue = 90;
+        else
+            rotationValue = - 90;
+
         isRotating = true;
         ChangeTransparencyWithTween();
         // используем метод DOLocalRotate для поворота объекта в локальных координатах
-        sprites.DOLocalRotate(new Vector3(0, 0, sprites.localRotation.eulerAngles.z - 90), rotationTime)
+        sprites.DOLocalRotate(new Vector3(0, 0, sprites.localRotation.eulerAngles.z + rotationValue), rotationTime)
             .OnComplete(() => { isRotating = false; });
-        collidersTriggers.DOLocalRotate(new Vector3(0, 0, collidersTriggers.localRotation.eulerAngles.z - 90), 0)
+        collidersTriggers.DOLocalRotate(new Vector3(0, 0, collidersTriggers.localRotation.eulerAngles.z + rotationValue), 0)
             .OnComplete(() => { checkColliders.CheckCollision(); });
-        colliders.DOLocalRotate(new Vector3(0, 0, colliders.localRotation.eulerAngles.z - 90), 0);
+        colliders.DOLocalRotate(new Vector3(0, 0, colliders.localRotation.eulerAngles.z + rotationValue), 0);
     }
-    private void StartRotate()
+    private void StartRotate(bool isLeft)
     {
         if (!isRotating)
         {
-            Rotate();
+            Rotate(isLeft);
         }
     }
 

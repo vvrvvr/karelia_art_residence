@@ -1354,6 +1354,14 @@ PlayableDirector:
     value: {fileID: 563995717}
   - key: {fileID: -5160371343316295711, guid: 2726a4a0390ea3c4ab25c73cde0b34d9, type: 2}
     value: {fileID: 298521990}
+  - key: {fileID: 5131447250551660669, guid: 2726a4a0390ea3c4ab25c73cde0b34d9, type: 2}
+    value: {fileID: 534604623}
+  - key: {fileID: -4795244736597695231, guid: 2726a4a0390ea3c4ab25c73cde0b34d9, type: 2}
+    value: {fileID: 1910150335}
+  - key: {fileID: 2784019315881280425, guid: 2726a4a0390ea3c4ab25c73cde0b34d9, type: 2}
+    value: {fileID: 1056011573}
+  - key: {fileID: 3133278559273249336, guid: 2726a4a0390ea3c4ab25c73cde0b34d9, type: 2}
+    value: {fileID: 1832491094}
   m_ExposedReferences:
     m_References:
     - 52b47c1314431a148806ba3746350736: {fileID: 963194225}
@@ -1635,7 +1643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3682845379570075556, guid: 84d9ec2977264d34b843b20445cdabf2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3682845379570075557, guid: 84d9ec2977264d34b843b20445cdabf2, type: 3}
       propertyPath: m_RootOrder
@@ -5590,19 +5598,19 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 794fd5970779183409fa4527ca6a01d6, type: 2}
-  m_InitialState: 1
-  m_WrapMode: 2
+  m_InitialState: 0
+  m_WrapMode: 0
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: -4524863653230986574, guid: 794fd5970779183409fa4527ca6a01d6, type: 2}
-    value: {fileID: 563995717}
   - key: {fileID: -8220286863128505820, guid: 794fd5970779183409fa4527ca6a01d6, type: 2}
     value: {fileID: 1832491094}
   - key: {fileID: -2217792020212293339, guid: 794fd5970779183409fa4527ca6a01d6, type: 2}
     value: {fileID: 963194231}
-  - key: {fileID: -5723493871926349764, guid: 794fd5970779183409fa4527ca6a01d6, type: 2}
-    value: {fileID: 1056011573}
+  - key: {fileID: 850738270531096960, guid: 794fd5970779183409fa4527ca6a01d6, type: 2}
+    value: {fileID: 534604623}
+  - key: {fileID: -1680146183975800321, guid: 794fd5970779183409fa4527ca6a01d6, type: 2}
+    value: {fileID: 1910150335}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1056011575
@@ -6924,7 +6932,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1478833518
 Transform:
   m_ObjectHideFlags: 0
@@ -7831,12 +7839,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d475c86fe69ee604e938cdeb090fc844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cam: {fileID: 965398698}
+  _cam1Anchor: {fileID: 563995712}
   _dot: {fileID: 876363288}
   _finish: {fileID: 2086702043}
   _arduinoManager: {fileID: 759993364}
   _modelsManager: {fileID: 979509361}
   resetTimeline: {fileID: 298521990}
+  finishTimeline: {fileID: 1056011574}
   levels:
   - {fileID: 1478833517}
   - {fileID: 982373917}
@@ -8501,8 +8510,8 @@ RectTransform:
   - {fileID: 1388614847}
   - {fileID: 1357010964}
   - {fileID: 534604624}
-  - {fileID: 1832491095}
   - {fileID: 1910150336}
+  - {fileID: 1832491095}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8627,7 +8636,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9149393083473047828, guid: f6f9b45feeb88ee4ca6e7dcb21a0f2bd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9149393083473047829, guid: f6f9b45feeb88ee4ca6e7dcb21a0f2bd, type: 3}
       propertyPath: m_RootOrder
@@ -8811,7 +8820,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1750894583}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9248,7 +9257,7 @@ RectTransform:
   - {fileID: 1982929802}
   - {fileID: 91988150}
   m_Father: {fileID: 1750894583}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -9715,7 +9724,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8340970996653627379, guid: df965b3afaff8a4438a7625a1dbc4ca9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df965b3afaff8a4438a7625a1dbc4ca9, type: 3}
@@ -10210,7 +10219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3579458027770441972, guid: 78e829e3effd2f24aaf40503539bc529, type: 3}
       propertyPath: m_IsKinematic
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3579458027770441975, guid: 78e829e3effd2f24aaf40503539bc529, type: 3}
       propertyPath: factorX

@@ -54,7 +54,7 @@ public class CamRotateManager : MonoBehaviour
             if (isFirstLaunch)
             {
                 horizontalValue = 0;
-                isFirstLaunch = false; //отключаем здесь, чтобы сработало в двух условиях
+                //isFirstLaunch = false; 
             }
             if(Mathf.Abs(horizontalValue) > 0)
                 RotateHorizontal(horizontalValue, _rotateSpeed);
@@ -83,20 +83,14 @@ public class CamRotateManager : MonoBehaviour
         }
     }
     private void RotateHorizontal(float rotateValue, float rotateSpeed)
-    {
-        // получаем текущий поворот объекта по оси Y
-        //Vector3 currentRotation = _camAnchor.transform.rotation.eulerAngles;
+    { 
         float newYRotation = currentRotation.y + (rotateValue * rotateSpeed);
-
-        // поворачиваем объект на новый угол
         _camAnchor.transform.rotation = Quaternion.Euler(currentRotation.x, newYRotation, currentRotation.z);
     }
     private void RotateVertical(float rotateValue, float rotateSpeed)
     {
-        // получаем текущий поворот объекта по оси Y
-        //Vector3 currentRotation = _camAnchor.transform.rotation.eulerAngles;
         float newXRotation = currentRotation.x + (rotateValue * rotateSpeed);
-        // Создаем твин для поворота объекта
         _camAnchor.transform.rotation = Quaternion.Euler(newXRotation, currentRotation.y, currentRotation.z);
+
     }
 }

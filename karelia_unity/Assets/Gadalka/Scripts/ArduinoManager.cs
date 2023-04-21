@@ -100,9 +100,9 @@ public class ArduinoManager : MonoBehaviour
             p1Prev = HorizontalInput;
             p2Prev = VerticalInput;
 
-            b3Prev = b3Current;
-            b5Prev = b5Current;
-            b7Prev = b7Current;
+            //b3Prev = b3Current;
+            //b5Prev = b5Current;
+            //b7Prev = b7Current;
 
             //p1diffCurrentPrev = p1diffCurrent;
             //p1diffCurrent = 0;
@@ -133,14 +133,6 @@ public class ArduinoManager : MonoBehaviour
         }
 
 
-        //p1diffCurrent = HorizontalInput - p1Prev;
-        ////Debug.Log(p1diffCurrent);   
-        //if(p1diffCurrent > 0.3f)
-        //{
-        //    p1diffCurrent = p1diffCurrentPrev;
-        //    Debug.Log("щелчок");
-        //}
-
         if (potentiometer2 < p1Min)
         {
             potentiometer2 = p1Min;
@@ -151,7 +143,7 @@ public class ArduinoManager : MonoBehaviour
         }
         VerticalInput = Mathf.InverseLerp(p1Min, p1Max, potentiometer2);
 
-        if (Mathf.Abs(HorizontalInput - p2Prev) > 0.7f)
+        if (Mathf.Abs(VerticalInput - p2Prev) > 1f)
         {
             VerticalInput = p2Prev;
             //добавить звук щелчка
