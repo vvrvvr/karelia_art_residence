@@ -45,6 +45,7 @@ public class Display2Manager : MonoBehaviour
 
     private int rotateButton2Current = 0;
     private int rotateButton2Prev = 0;
+    private bool canRotate = true;
 
     [SerializeField] private EventManager _eventManager;
 
@@ -66,36 +67,39 @@ public class Display2Manager : MonoBehaviour
     private void Update()
     {
         resetButtonCurrent = _arduinoManager.b5Current;
-        if(resetButtonCurrent != resetButtonPrev && resetButtonCurrent == 0)
+        if (resetButtonCurrent != resetButtonPrev && resetButtonCurrent == 0)
         {
             ResetDisplay2();
         }
-        
-        rotateButton1Current =_arduinoManager.b3Current;
-        if(rotateButton1Current != rotateButton1Prev && rotateButton1Current == 0)
-        {
-            _eventManager.InvokeRotateEvent(true);
-            Debug.Log("rotate 1");
-        }
 
-        rotateButton2Current = _arduinoManager.b7Current;
-        if (rotateButton2Current != rotateButton2Prev && rotateButton2Current == 0)
+        if (canRotate)
         {
-            _eventManager.InvokeRotateEvent(false);
-            Debug.Log("rotate 2");
+            rotateButton1Current = _arduinoManager.b3Current;
+            if (rotateButton1Current != rotateButton1Prev && rotateButton1Current == 0)
+            {
+                _eventManager.InvokeRotateEvent(true);
+
+            }
+
+            rotateButton2Current = _arduinoManager.b7Current;
+            if (rotateButton2Current != rotateButton2Prev && rotateButton2Current == 0)
+            {
+                _eventManager.InvokeRotateEvent(false);
+
+            }
         }
 
 
         _currentDistance = Vector3.Distance(_dotPosition.localPosition, _finishPoition.localPosition);
 
-        //if(Input.GetKeyDown(KeyCode.J))
-        //{
-        //    ChangeLevel();
-        //}
-        //if (Input.GetKeyDown(KeyCode.K))
-        //{
-        //    ResetDisplay2();
-        //}
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            ChangeLevel();
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            ResetDisplay2();
+        }
 
         //что-то делаем
 
@@ -106,10 +110,10 @@ public class Display2Manager : MonoBehaviour
         rotateButton2Prev = rotateButton2Current;
     }
 
-    public  int GetLevelsLength()
+    public int GetLevelsLength()
     {
         return levels.Length;
-        
+
     }
 
     public void StartGame()
@@ -121,10 +125,12 @@ public class Display2Manager : MonoBehaviour
         finishTimeline.Play();
         _cam1Anchor.DORotate(Vector3.zero, 0.5f, RotateMode.FastBeyond360);
         ModelsManager.Instance.SetModelMaterialAmplitude(0f);
+        canRotate = false;
     }
 
     public void ResetDisplay2()
     {
+        canRotate = true;
         currentLevel = 0;
         _dot.SetActive(false);
         _finish.SetActive(false);
@@ -137,6 +143,7 @@ public class Display2Manager : MonoBehaviour
         _modelsManager.SetStartValues();
         resetTimeline.SetActive(true);
         ModelsManager.Instance.GetRandomModel();
+        ModelsManager.Instance.ShuffleArray();
     }
 
     public void ChangeLevel()
@@ -157,9 +164,9 @@ public class Display2Manager : MonoBehaviour
             levels[i].SetActive(false);
         }
         levels[currentLevel].SetActive(true);
-        
+
         SetStartPosition();
-        _modelsManager.ChangeLevelValues(); 
+        _modelsManager.ChangeLevelValues();
     }
 
 
@@ -188,9 +195,9 @@ public class Display2Manager : MonoBehaviour
 
     private IEnumerator WaitToSetDot()
     {
-    
+
         yield return new WaitForSeconds(1f);
-       
+
         _dot.SetActive(true);
         _dot.GetComponent<Dot>().hasControl = true;
         _eventManager.isDead = false;

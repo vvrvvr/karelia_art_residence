@@ -127,7 +127,11 @@ public class ModelsManager : MonoBehaviour
             newCount = Random.Range(0, modelArray.Length - 1);
         }
         GetRandomTexture();
-        modelArray[currentCount].SetActive(false);
+        foreach(var model in modelArray)
+        {
+            model.SetActive(false);
+        }
+        //modelArray[currentCount].SetActive(false);
         currentCount = newCount;
         modelArray[newCount].SetActive(true);
     }
@@ -142,5 +146,18 @@ public class ModelsManager : MonoBehaviour
         }
         currentTextureCount = newCount;
         material.mainTexture = modelsTextures[newCount];
+    }
+
+    public void ShuffleArray()
+    {
+        // Используем алгоритм Фишера-Йетса для перемешивания массива в случайном порядке
+        for (int i = modelArray.Length - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            // Обмениваем элементы с индексами i и j местами
+            GameObject temp = modelArray[i];
+            modelArray[i] = modelArray[j];
+            modelArray[j] = temp;
+        }
     }
 }
