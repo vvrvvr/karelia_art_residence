@@ -6,9 +6,7 @@ using Uduino;
 
 public class ArduinoManager : MonoBehaviour
 {
-    [SerializeField] private Text p1Text;
     [SerializeField] private Slider p1Slider;
-    [SerializeField] private Text p2Text;
     [SerializeField] private Slider p2Slider;
 
     [SerializeField] private Display2Manager _display2Manager;
@@ -154,10 +152,7 @@ public class ArduinoManager : MonoBehaviour
 
         //update values
         p1Slider.value = HorizontalInput;
-        p1Text.text = ""+HorizontalInput;
-
         p2Slider.value = VerticalInput;
-        p2Text.text = "" + VerticalInput;
 
     }
 

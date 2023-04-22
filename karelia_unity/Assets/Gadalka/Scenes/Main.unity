@@ -4054,8 +4054,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.46502313, g: 0.4662263, b: 0.4716981, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 0}
+      key0: {r: 0, g: 0.48235294, b: 0.12941177, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 0.96644324}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -4071,8 +4071,8 @@ TrailRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 28720
-      atime2: 0
+      atime1: 6939
+      atime2: 28720
       atime3: 0
       atime4: 0
       atime5: 0
@@ -4080,7 +4080,7 @@ TrailRenderer:
       atime7: 0
       m_Mode: 0
       m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
+      m_NumAlphaKeys: 3
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
@@ -10622,6 +10622,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1637945837}
     m_Modifications:
+    - target: {fileID: 3402113105285975818, guid: 78e829e3effd2f24aaf40503539bc529, type: 3}
+      propertyPath: m_Color.b
+      value: 0.12941177
+      objectReference: {fileID: 0}
+    - target: {fileID: 3402113105285975818, guid: 78e829e3effd2f24aaf40503539bc529, type: 3}
+      propertyPath: m_Color.g
+      value: 0.48235294
+      objectReference: {fileID: 0}
+    - target: {fileID: 3402113105285975818, guid: 78e829e3effd2f24aaf40503539bc529, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3402113105285975818, guid: 78e829e3effd2f24aaf40503539bc529, type: 3}
       propertyPath: m_SortingOrder
       value: 1
