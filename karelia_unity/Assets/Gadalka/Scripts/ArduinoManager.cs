@@ -8,6 +8,7 @@ public class ArduinoManager : MonoBehaviour
 {
     [SerializeField] private Slider p1Slider;
     [SerializeField] private Slider p2Slider;
+    [SerializeField] private GameObject errorScreen;
 
     [SerializeField] private Display2Manager _display2Manager;
     private UduinoManager _uduino;
@@ -170,12 +171,14 @@ public class ArduinoManager : MonoBehaviour
     {
         Debug.Log("board connected");
         isBoardConnected = true;
-        //errorScreen.SetActive(false);
+        errorScreen.SetActive(false);
+
     }
     public void BoardDisconnected()
     {
         Debug.Log("board disconnected");
         isBoardConnected = false;
-        //errorScreen.SetActive(true);
+        errorScreen.SetActive(true);
+       
     }
 }
