@@ -64,7 +64,7 @@ public class ArduinoManager : MonoBehaviour
         // //buttons
         _uduino.pinMode(3, PinMode.Input_pullup);
         _uduino.pinMode(5, PinMode.Input_pullup);
-        _uduino.pinMode(7, PinMode.Input_pullup);
+        _uduino.pinMode(8, PinMode.Input_pullup);
         //
         // //krab
         // _uduino.pinMode(AnalogPin.A0, PinMode.Input);
@@ -85,7 +85,7 @@ public class ArduinoManager : MonoBehaviour
             // //buttons
             b3Current = _uduino.digitalRead(3);
             b5Current = _uduino.digitalRead(5);
-            b7Current = _uduino.digitalRead(7);
+            b7Current = _uduino.digitalRead(8);
             //
             // //krab
             // potentiometersArr[0] = _uduino.analogRead(AnalogPin.A0);
