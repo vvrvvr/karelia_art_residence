@@ -11,6 +11,8 @@ public class ModelsManager : MonoBehaviour
     [SerializeField] private Texture[] modelsTextures = new Texture[0];
     [SerializeField] private Material material;
     [SerializeField] private Display2Manager display2Manager;
+    [Space]
+    [SerializeField] private MusicManager musicManager;
     private int currentCount = 0;
     private int currentTextureCount = 0;
     private int maxCount;
@@ -80,6 +82,7 @@ public class ModelsManager : MonoBehaviour
     public void SetModelMaterialAmplitude(float val)
     {
         material.SetFloat("_Amplitude", val);
+        musicManager.NoiseSetValue(val); 
     }
 
     private void HandleAmplitudeValues()
@@ -88,6 +91,7 @@ public class ModelsManager : MonoBehaviour
         {
             var val = ConvertNumber(display2Manager._currentDistance);
             material.SetFloat("_Amplitude", val);
+            musicManager.NoiseSetValue(val);
         }
     }
 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{9e3e2147-b7f7-4ad2-af16-0b83afd28e59}">
+		<property name="assetPath">
+			<value>gadalka_change_form_2.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.5</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{79bfa2de-bf00-4262-b5a7-1752fd3e8c26}</destination>
+		</relationship>
+	</object>
+</objects>

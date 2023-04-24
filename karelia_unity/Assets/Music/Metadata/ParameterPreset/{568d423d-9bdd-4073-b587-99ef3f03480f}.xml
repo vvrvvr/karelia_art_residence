@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{568d423d-9bdd-4073-b587-99ef3f03480f}">
+		<property name="name">
+			<value>MaterialAmplitude</value>
+		</property>
+		<relationship name="folder">
+			<destination>{aa42262e-d479-42ff-a952-49a576206cdb}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{ae9a4a2f-6ee2-45b0-b182-c03f3458a4e7}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{ae9a4a2f-6ee2-45b0-b182-c03f3458a4e7}">
+		<property name="maximum">
+			<value>180</value>
+		</property>
+		<property name="initialValue">
+			<value>180</value>
+		</property>
+		<property name="seekSpeed">
+			<value>200</value>
+		</property>
+		<property name="seekSpeedAsymmetric">
+			<value>true</value>
+		</property>
+	</object>
+</objects>

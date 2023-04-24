@@ -10,6 +10,6 @@ public class DisplaysManager : MonoBehaviour
             Display.displays[i].Activate();
             
         }
-        Cursor.visible = false;
+        //Cursor.visible = false;
     }
 }

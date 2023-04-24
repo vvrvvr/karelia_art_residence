@@ -6337,6 +6337,7 @@ MonoBehaviour:
   deathParticle: {fileID: 679734086037513813, guid: d5848d1807d69f341881e169951e22c1, type: 3}
   display2Cam: {fileID: 965398698}
   display2Manager: {fileID: 1637945838}
+  musicManager: {fileID: 1417612529}
 --- !u!114 &979509361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6397,6 +6398,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: aa0a090f5eea09a4fba56b9ba6699284, type: 3}
   material: {fileID: 2100000, guid: 5e20463e1312b8f43b99301c132f0122, type: 2}
   display2Manager: {fileID: 1637945838}
+  musicManager: {fileID: 1417612529}
   maxAmplitude: 180
   _minDistance: 0
   _maxDistance: 10
@@ -8226,6 +8228,74 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11e4d8c78ae7bd04d8bc898d5610a0d0, type: 3}
+--- !u!1 &1417612528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1417612530}
+  - component: {fileID: 1417612529}
+  m_Layer: 0
+  m_Name: Music Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1417612529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417612528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd083db2f2d0c9c4783591ca415daa27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _musicOn: 0
+  _masterVolume: 1
+  player: {fileID: 0}
+  _music:
+    Guid:
+      Data1: 618401224
+      Data2: 1324326213
+      Data3: -907358050
+      Data4: 446134498
+    Path: event:/Background
+  _noise:
+    Guid:
+      Data1: 713199682
+      Data2: 1170942199
+      Data3: 1040457624
+      Data4: 1414216445
+    Path: event:/Foggy Noise
+  _turn:
+    Guid:
+      Data1: -392556273
+      Data2: 1257841651
+      Data3: 6376876
+      Data4: 1562046873
+    Path: event:/Change Form
+--- !u!4 &1417612530
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417612528}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1423084393
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ public class EventManager : MonoBehaviour
     [SerializeField] private GameObject deathParticle;
     [SerializeField] private Camera display2Cam;
     [SerializeField] private Display2Manager display2Manager;
+    [SerializeField] private MusicManager musicManager;
 
     private void Awake()
     {
@@ -35,17 +36,18 @@ public class EventManager : MonoBehaviour
     private void Update()
     {
         //// проверяем, нажата ли клавиша пробела
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    // вызываем событие поворота объекта
-        //    InvokeRotateEvent(false);
-        //}
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            // вызываем событие поворота объекта
+            InvokeRotateEvent(false);
+        }
     }
 
     // метод для явного вызова события поворота объекта
     public void InvokeRotateEvent(bool isLeftTurn)
     {
         OnRotate?.Invoke(isLeftTurn);
+        musicManager.PlayTurn();
         ModelsManager.Instance.GetRandomModel();
         display2Manager.distortionCount++;
     }
