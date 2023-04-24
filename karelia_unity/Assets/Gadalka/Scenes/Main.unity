@@ -8127,7 +8127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1357010964
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8259,7 +8259,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _musicOn: 0
   _masterVolume: 1
-  player: {fileID: 0}
   _music:
     Guid:
       Data1: 618401224
@@ -8281,6 +8280,13 @@ MonoBehaviour:
       Data3: 6376876
       Data4: 1562046873
     Path: event:/Change Form
+  _pulse:
+    Guid:
+      Data1: -344759170
+      Data2: 1076145680
+      Data3: 1923926921
+      Data4: -660842336
+    Path: event:/X_Y_Pulse
 --- !u!4 &1417612530
 Transform:
   m_ObjectHideFlags: 0

@@ -89,9 +89,15 @@ public class ModelsManager : MonoBehaviour
     {
         if(isShaderWorking)
         {
-            var val = ConvertNumber(display2Manager._currentDistance);
+            var distance = display2Manager._currentDistance;
+            var val = ConvertNumber(distance);
             material.SetFloat("_Amplitude", val);
             musicManager.NoiseSetValue(val);
+            musicManager.PulseSetValue(distance);
+        }
+        else
+        {
+            musicManager.PulseSetValue(-1);
         }
     }
 
