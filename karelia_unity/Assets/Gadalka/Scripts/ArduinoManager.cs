@@ -51,8 +51,8 @@ public class ArduinoManager : MonoBehaviour
     {
         _uduino = UduinoManager.Instance;
         _uduino.alwaysRead = false;
-        _uduino.readTimeout = 1;
-        _uduino.writeTimeout = 1;
+        _uduino.readTimeout = 10;
+        _uduino.writeTimeout = 10;
     }
 
     void Start()

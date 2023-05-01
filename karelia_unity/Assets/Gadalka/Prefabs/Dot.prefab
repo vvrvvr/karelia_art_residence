@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3579458027770441968}
   - component: {fileID: 3579458027770441971}
   - component: {fileID: 3579458027770441972}
+  - component: {fileID: 831164314596175192}
   - component: {fileID: 3579458027770441975}
   - component: {fileID: 3402113105285975818}
   m_Layer: 0
@@ -64,6 +65,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 1
+--- !u!114 &831164314596175192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3579458027770441969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd726dc4dbce3d243b989af53d702617, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3579458027770441975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,8 +93,7 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
-  factorX: 0
-  factorY: 0
+  speedMultiplier: 0
   hasControl: 1
   isFirstLaunch: 1
 --- !u!212 &3402113105285975818
