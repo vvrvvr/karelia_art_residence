@@ -14,6 +14,7 @@ public class Section : MonoBehaviour
     [SerializeField] private Transform colliders;
     [SerializeField] private CheckColliders checkColliders;
     [SerializeField] private Material spriteMaterial;
+    
     private float fadeTime;
 
 
