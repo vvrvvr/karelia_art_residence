@@ -2789,7 +2789,7 @@ MonoBehaviour:
     value: 0
   sunShaftIntensity:
     overrideState: 1
-    value: 0.87
+    value: 0.37
   blendMode:
     overrideState: 1
     value: 1
