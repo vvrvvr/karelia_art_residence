@@ -21,6 +21,7 @@ MonoBehaviour:
   - {fileID: 706375194115496081}
   - {fileID: 7324196972869096663}
   - {fileID: 7394174772629137865}
+  - {fileID: 5961847773283477989}
 --- !u!114 &114013995337387024
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -774,7 +775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b94fcd11afffcb142908bfcb1e261fba, type: 3}
   m_Name: MotionBlur
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
@@ -2337,7 +2338,7 @@ MonoBehaviour:
     value: {x: 0.5, y: 0.5}
   intensity:
     overrideState: 1
-    value: 0.484
+    value: 0.419
   smoothness:
     overrideState: 1
     value: 0.58
@@ -2788,7 +2789,7 @@ MonoBehaviour:
     value: 0
   sunShaftIntensity:
     overrideState: 1
-    value: 0.6
+    value: 0.87
   blendMode:
     overrideState: 1
     value: 1
@@ -2809,10 +2810,45 @@ MonoBehaviour:
     value: 0.5
   length:
     overrideState: 1
-    value: 2
+    value: 5.53
   noiseStrength:
     overrideState: 0
     value: 0
+--- !u!114 &5961847773283477989
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 479a7432c78add14f87841bf50afc9e1, type: 3}
+  m_Name: HueShift3D
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  colorSource:
+    overrideState: 1
+    value: 0
+  gradientTex:
+    overrideState: 0
+    value: {fileID: 0}
+    defaultState: 1
+  intensity:
+    overrideState: 1
+    value: 0.037
+  speed:
+    overrideState: 1
+    value: 0.412
+  size:
+    overrideState: 1
+    value: 1
+  geoInfluence:
+    overrideState: 1
+    value: 8.85
 --- !u!114 &7324196972869096663
 MonoBehaviour:
   m_ObjectHideFlags: 3
