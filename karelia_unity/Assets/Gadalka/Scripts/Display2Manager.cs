@@ -18,6 +18,7 @@ public class Display2Manager : MonoBehaviour
     [Space(10)]
     [SerializeField] private TextMeshProUGUI messageText;
     [SerializeField] private TextMeshProUGUI distortionText;
+    [SerializeField] private Image qRCode;
     public int distortionCount = 0;
 
     //levels
@@ -137,6 +138,7 @@ public class Display2Manager : MonoBehaviour
         canRotate = false;
         messageText.text =  ModelsManager.Instance.GetModelName();
         distortionText.text = "Количество искажений: " + distortionCount;
+        qRCode.sprite = ModelsManager.Instance.GetCurrentModelQrCode();
     }
 
     public void ResetDisplay2()

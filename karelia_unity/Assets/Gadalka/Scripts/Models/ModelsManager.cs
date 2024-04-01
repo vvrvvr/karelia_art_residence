@@ -122,6 +122,11 @@ public class ModelsManager : MonoBehaviour
         return name;
     }
 
+    public Sprite GetCurrentModelQrCode()
+    {
+        return qRCodeArray[currentModelIndex];
+    }
+
     public float ConvertNumber(float number)
     {
         float convertedNumber = Mathf.InverseLerp(_minDistance, _maxDistance, number);
