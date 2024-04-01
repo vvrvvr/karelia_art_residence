@@ -117,7 +117,7 @@ public class ModelsManager : MonoBehaviour
             }
         }
         
-        Debug.Log(modelArray[currentModelIndex].name);
+        Debug.Log(qRCodeArray[currentModelIndex].name);
 
         return name;
     }
