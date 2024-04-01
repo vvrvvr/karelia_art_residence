@@ -7,12 +7,13 @@ public class ModelsManager : MonoBehaviour
     public static ModelsManager Instance { get; private set; } // экземпляр синглтона
 
     public GameObject[] modelArray = new GameObject[0];
+    public Sprite[] qRCodeArray = new Sprite[0];
     [SerializeField] private GameObject models;
     [SerializeField] private Texture[] modelsTextures = new Texture[0];
     [SerializeField] private Material material;
     [SerializeField] private Display2Manager display2Manager;
     [Space] [SerializeField] private MusicManager musicManager;
-    private int currentCount = 0;
+    private int currentModelIndex = 0;
     private int currentTextureCount = 0;
     private int maxCount;
 
@@ -47,13 +48,14 @@ public class ModelsManager : MonoBehaviour
     {
         //models
         SetupModels();
-        currentCount = Random.Range(0, maxCount);
+
+        currentModelIndex = Random.Range(0, maxCount);
         currentTextureCount = Random.Range(0, modelsTextures.Length - 1);
+
         _currentDistance = display2Manager._currentDistance;
-        //material
-        // SetStartValues();
 
         GetRandomModel();
+       
     }
 
     public void ChangeLevelValues()
@@ -114,6 +116,8 @@ public class ModelsManager : MonoBehaviour
                 break;
             }
         }
+        
+        Debug.Log(modelArray[currentModelIndex].name);
 
         return name;
     }
@@ -127,7 +131,7 @@ public class ModelsManager : MonoBehaviour
 
     private void SetupModels()
     {
-        maxCount = modelArray.Length;
+        maxCount = modelArray.Length - 1;
 
         for (int i = 0; i < modelArray.Length; i++)
         {
@@ -140,20 +144,21 @@ public class ModelsManager : MonoBehaviour
     {
         int newCount = Random.Range(0, modelArray.Length - 1);
 
-        while (newCount == currentCount)
+        while (newCount == currentModelIndex)
         {
             newCount = Random.Range(0, modelArray.Length - 1);
         }
-
-        GetRandomTexture();
+        
         foreach (var model in modelArray)
         {
             model.SetActive(false);
         }
-
-        //modelArray[currentCount].SetActive(false);
-        currentCount = newCount;
-        modelArray[newCount].SetActive(true);
+        
+        currentModelIndex = newCount;
+        
+        modelArray[currentModelIndex].SetActive(true);
+        
+        GetRandomTexture();
     }
 
     private void GetRandomTexture()
@@ -179,6 +184,19 @@ public class ModelsManager : MonoBehaviour
             GameObject temp = modelArray[i];
             modelArray[i] = modelArray[j];
             modelArray[j] = temp;
+            
+            Sprite temp2 = qRCodeArray[i];
+            qRCodeArray[i] = qRCodeArray[j];
+            qRCodeArray[j] = temp2;
+        }
+
+        for (int i = 0; i < modelArray.Length; i++)
+        {
+            if (modelArray[i].activeSelf)
+            {
+                currentModelIndex = i;
+                break;
+            }
         }
     }
 }
