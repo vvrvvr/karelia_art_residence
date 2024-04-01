@@ -6,13 +6,12 @@ public class ModelsManager : MonoBehaviour
 {
     public static ModelsManager Instance { get; private set; } // экземпл€р синглтона
 
-    private GameObject[] modelArray;
+    public GameObject[] modelArray = new GameObject[0];
     [SerializeField] private GameObject models;
     [SerializeField] private Texture[] modelsTextures = new Texture[0];
     [SerializeField] private Material material;
     [SerializeField] private Display2Manager display2Manager;
-    [Space]
-    [SerializeField] private MusicManager musicManager;
+    [Space] [SerializeField] private MusicManager musicManager;
     private int currentCount = 0;
     private int currentTextureCount = 0;
     private int maxCount;
@@ -29,6 +28,7 @@ public class ModelsManager : MonoBehaviour
     //public float testTest = 0;
 
     public bool isShaderWorking = false;
+
     private void Awake()
     {
         // провер€ем, существует ли уже экземпл€р синглтона
@@ -42,18 +42,20 @@ public class ModelsManager : MonoBehaviour
             Destroy(gameObject); // если синглтон уже существует, удал€ем этот объект
         }
     }
+
     void Start()
     {
         //models
-        CollectModels();
+        SetupModels();
         currentCount = Random.Range(0, maxCount);
-        currentTextureCount = Random.Range(0, modelsTextures.Length-1);
+        currentTextureCount = Random.Range(0, modelsTextures.Length - 1);
         _currentDistance = display2Manager._currentDistance;
         //material
         // SetStartValues();
 
         GetRandomModel();
     }
+
     public void ChangeLevelValues()
     {
         _currentMax = _currentMin;
@@ -71,23 +73,23 @@ public class ModelsManager : MonoBehaviour
 
     private void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.U))
         {
             GetRandomModel();
         }
+
         HandleAmplitudeValues();
     }
 
     public void SetModelMaterialAmplitude(float val)
     {
         material.SetFloat("_Amplitude", val);
-        musicManager.NoiseSetValue(val); 
+        musicManager.NoiseSetValue(val);
     }
 
     private void HandleAmplitudeValues()
     {
-        if(isShaderWorking)
+        if (isShaderWorking)
         {
             var distance = display2Manager._currentDistance;
             var val = ConvertNumber(distance);
@@ -112,6 +114,7 @@ public class ModelsManager : MonoBehaviour
                 break;
             }
         }
+
         return name;
     }
 
@@ -122,44 +125,37 @@ public class ModelsManager : MonoBehaviour
         return convertedNumber;
     }
 
-    private void CollectModels()
+    private void SetupModels()
     {
-        if (models != null)
+        maxCount = modelArray.Length;
+
+        for (int i = 0; i < modelArray.Length; i++)
         {
-            int childCount = models.transform.childCount;
-            maxCount = childCount;
-            modelArray = new GameObject[childCount];
-            for (int i = 0; i < childCount; i++)
-            {
-                GameObject child = models.transform.GetChild(i).gameObject;
-                modelArray[i] = child;
-                child.SetActive(false);
-            }
-        }
-        else
-        {
-            Debug.Log("модели не найдены");
+            GameObject child = models.transform.GetChild(i).gameObject;
+            modelArray[i].SetActive(false);
         }
     }
-    
+
     public void GetRandomModel()
     {
-        int newCount = Random.Range(0, modelArray.Length -1 );
+        int newCount = Random.Range(0, modelArray.Length - 1);
 
-        while(newCount == currentCount)
+        while (newCount == currentCount)
         {
             newCount = Random.Range(0, modelArray.Length - 1);
         }
+
         GetRandomTexture();
-        foreach(var model in modelArray)
+        foreach (var model in modelArray)
         {
             model.SetActive(false);
         }
+
         //modelArray[currentCount].SetActive(false);
         currentCount = newCount;
         modelArray[newCount].SetActive(true);
     }
-    
+
     private void GetRandomTexture()
     {
         int newCount = Random.Range(0, modelsTextures.Length - 1);
@@ -168,6 +164,7 @@ public class ModelsManager : MonoBehaviour
         {
             newCount = Random.Range(0, modelsTextures.Length - 1);
         }
+
         currentTextureCount = newCount;
         material.mainTexture = modelsTextures[newCount];
     }
