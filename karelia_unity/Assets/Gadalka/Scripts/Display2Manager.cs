@@ -20,6 +20,14 @@ public class Display2Manager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI distortionText;
     [SerializeField] private Image qRCode;
     public int distortionCount = 0;
+    [Space(10)]
+    [SerializeField] Transform _cam2Anchor;
+    public Quaternion startRotation;
+    public Vector3 endRotation;
+    public float time1 = 1f;
+    public float delay = 0.5f;
+    public float time2 = 1f;
+    public Ease easeType = Ease.Linear;
 
     //levels
     [SerializeField] GameObject[] levels = new GameObject[3];
@@ -67,6 +75,7 @@ public class Display2Manager : MonoBehaviour
 
         _dotPosition = _dot.transform;
         _finishPoition = _finish.transform;
+        startRotation = _cam2Anchor.rotation;
         ResetDisplay2();
     }
 
@@ -143,6 +152,7 @@ public class Display2Manager : MonoBehaviour
 
     public void ResetDisplay2()
     {
+        //ShakeCam2();
         canRotate = true;
         currentLevel = 0;
         _dot.SetActive(false);
@@ -160,9 +170,28 @@ public class Display2Manager : MonoBehaviour
         distortionCount = 0;
     }
 
+    public void ShakeCam2()
+    {
+        // Поворот камеры к конечному положению
+        Quaternion endQuaternion = Quaternion.Euler(endRotation);
+        _cam2Anchor.DOLocalRotate(endQuaternion.eulerAngles, time1)
+            .SetEase(easeType)
+            .OnComplete(() =>
+            {
+                // Задержка
+                DOVirtual.DelayedCall(delay, () =>
+                {
+                    // Поворот камеры к начальному положению
+                    _cam2Anchor.DOLocalRotate(startRotation.eulerAngles, time2)
+                        .SetEase(easeType);
+                });
+            });
+    }
     public void ChangeLevel()
     {
         _modelsManager.isShaderWorking = false;
+
+        ShakeCam2();
 
         currentLevel++;
         _dot.SetActive(false);
