@@ -4,8 +4,10 @@ public class OptimisationManager : MonoBehaviour
 {
     public GameObject fogModels;
     public GameObject finishLight;
+    public Light shaftsLight;
     private int isFog = 1;
     private int isLight = 1;
+    private int isShafts = 1;
 
     void Start()
     {
@@ -42,6 +44,23 @@ public class OptimisationManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("isLight", 1);
         }
+        
+        if(PlayerPrefs.HasKey("isShafts"))
+        {
+            isShafts = PlayerPrefs.GetInt("isShafts");
+            if (isShafts == 0)
+            {
+                shaftsLight.shadows = LightShadows.None;
+            }
+            else
+            {
+                shaftsLight.shadows = LightShadows.Soft;
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetInt("isShafts", 1);
+        }
     }
 
     private void Update()
@@ -63,10 +82,7 @@ public class OptimisationManager : MonoBehaviour
                     PlayerPrefs.SetInt("isFogModels", isFog);
                 }
             }
-        }
-
-        if (Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt))
-        {
+            
             if (Input.GetKeyDown(KeyCode.X))
             {
                 if (isLight == 1)
@@ -80,6 +96,22 @@ public class OptimisationManager : MonoBehaviour
                     isLight = 1;
                     finishLight.SetActive(true);
                     PlayerPrefs.SetInt("isLight", isLight);
+                }
+            }
+            
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                if (isShafts == 1)
+                {
+                    isShafts = 0;
+                    shaftsLight.shadows = LightShadows.None;
+                    PlayerPrefs.SetInt("isLight", isShafts);
+                }
+                else
+                {
+                    isShafts = 1;
+                    shaftsLight.shadows = LightShadows.Soft;
+                    PlayerPrefs.SetInt("isLight", isShafts);
                 }
             }
         }
