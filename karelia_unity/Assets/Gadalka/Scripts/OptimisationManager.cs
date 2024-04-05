@@ -105,13 +105,13 @@ public class OptimisationManager : MonoBehaviour
                 {
                     isShafts = 0;
                     shaftsLight.shadows = LightShadows.None;
-                    PlayerPrefs.SetInt("isLight", isShafts);
+                    PlayerPrefs.SetInt("isShafts", isShafts);
                 }
                 else
                 {
                     isShafts = 1;
                     shaftsLight.shadows = LightShadows.Soft;
-                    PlayerPrefs.SetInt("isLight", isShafts);
+                    PlayerPrefs.SetInt("isShafts", isShafts);
                 }
             }
         }
